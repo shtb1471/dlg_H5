@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打零工企业web</title>
+	<link rel="stylesheet" href="css/default.css"/>
+	<link rel="stylesheet" href="css/common.css"/>
+	<link rel="stylesheet" href="css/news.css"/>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+	<div>
+		<div class="header">
+			<div class="container">
+				<div class="logo">
+					<img src="images/logo.png" alt="">
+				</div>
+				<div class="news">
+					<ul>
+						<li>打零工互联网 <span>消息(<b class="redColor">10</b>)</span></li>
+						<li>退出</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="contain">
+			<div class="nav_title">
+				<div class="container">
+					<ul>
+						<li><img src="images/icon_18.png" alt="">首页</li>
+						<li><b>账户管理</b> / 企业资料</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<div class="nav">
+					<ul>
+						<li> <img src="images/icon_01.png" alt="">零工管理
+							<ul class="nav_child">
+								<li class="active_li"><span class="active">></span>零工市场</li>
+								<li>未接单</li>
+								<li>进行中</li>
+								<li>已完成</li>
+							</ul>
+						</li>
+						<li><img src="images/icon_02.png" alt="">客户管理
+							<ul>
+								<li>我的客户</li>
+							</ul>
+						</li>
+						<li><img src="images/icon_03.png" alt="">雇员管理
+							<ul>
+								<li>公司职员</li>
+								<li>临时雇员</li>
+								<li>添加分组</li>
+							</ul>
+						</li>
+						<li><img src="images/icon_04.png" alt="">账户管理
+							<ul>
+								<li>企业资料</li>
+								<li>子账号管理</li>
+								<li>我的钱包</li>
+								<li>我的收益</li>
+								<li>安全设置</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="right_content">
+					<div class="right_content_left securityset_content_left">
+						<div class="form_group">
+							<div class="input_group_inline input_seting">
+								<span class="icon_i"><img src="images/i_01.png" alt=""></span>
+								<div>绑定手机号<span>137****2716</span></div>
+							</div>
+							<div class="input_group_inline input_seting">
+								<span class="icon_i"><img src="images/i_02.png" alt=""></span>
+								<div>绑定邮箱<span id="mailValue">sssss@gongren.com</span><input type="text" id="mail_change" hidden></div>
+								<span class="linkColor" id="mail_change_link">修改</span>
+							</div>
+							<div class="input_group_inline input_seting">
+								<span class="icon_i"><img src="images/i_03.png" alt=""></span>
+								<div>登录密码<span  id="passwordValue">******</span><input type="text" id="password_change" hidden></div>
+								<span class="linkColor" id="password_change_link">修改</span>
+							</div>
+							<div class="input_group_inline input_seting">
+								<span class="icon_i"><img src="images/i_03.png" alt=""></span>
+								<div>支付密码<span id="payValue">******</span><input type="text" id="pay_change" hidden></div>
+								<span class="linkColor" id="pay_change_link">修改</span>
+							</div>
+							<div class="input_group_btn">	
+								<span class="de_btn">保存</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				 <div class="logo">
+					<img src="images/logo_1.png" alt="">
+				</div>
+				<ul>
+					<li>Copyright&copy;2017 打零工 沪ICP备156006046号-1</li>
+					<li>公司地址：上海市普陀区真北路958号天地科技广场一号楼7楼</li>
+				</ul>
+				<ul>
+					<li>客服邮箱：service@dalinggong.com</li>
+					<li>业务合作邮箱：mkt@dalinggong.com楼</li>
+				</ul>
+				<ul>
+					<li>客服热线：400-750-8585 <span>(周一至周五9：00-18：00)</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<script>		
+	$(function(){
+		$("#mail_change_link").click(function(){
+			var mailValue = $("#mailValue").text();
+			$(this).parents(".input_seting").css("border-bottom","none");
+			$("#mail_change").show().val(mailValue).parent("div").children("span").hide();
+		});
+		$("#password_change_link").click(function(){
+			var passwordValue = $("#passwordValue").text();
+			$(this).parents(".input_seting").css("border-bottom","none");
+			$("#password_change").show().val(passwordValue).parent("div").children("span").hide();
+		})
+		$("#pay_change_link").click(function(){
+			var payValue = $("#payValue").text();
+			$(this).parents(".input_seting").css("border-bottom","none");
+			$("#pay_change").show().val(payValue).parent("div").children("span").hide();
+		})
+
+	})
+</script>
+</body>
+</html>

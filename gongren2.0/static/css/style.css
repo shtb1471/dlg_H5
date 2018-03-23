@@ -1,0 +1,130 @@
+/***********home.html*************/
+.home-container{
+    min-width: 1024px;
+}
+.home-margin-bottom{
+    margin-bottom: 64px;
+}
+.home-thumb{
+}
+.home-partial{
+    background: #fff;
+}
+.home-partial-title{
+    height: 40px;
+    line-height: 40px;
+    background: #e8e8e8;
+    padding: 0px 15px;
+    font-size: 16px;
+}
+.home-partial-title a{
+    font-size: 18px;
+}
+.home-thumb{
+    margin-top: 30px;
+}
+.home-partial-left{
+    height: 168px;
+    padding: 10px 15px;
+}
+.home-partial-img{
+    width:100%;
+    position: relative;
+    cursor: pointer;
+}
+.home-partial-img img{
+    width: 100%;
+}
+.home-footer{
+    background: rgba(0,0,0,0.3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#3F000000,endcolorstr=#3F000000);
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0px;
+}
+.home-footer input{
+    position: absolute;
+    width:100%;
+    height: 32px;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+.home-partial-content{
+    padding: 12px 15px;
+    line-height: 42px;
+    height: 200px;
+}
+.home-partial-contact{
+    line-height: 34px;
+}
+.icon-data{
+    background: url("../images/icon1.png") 0px -411px no-repeat;
+}
+.icon-manager{
+    background: url("../images/icon1.png") 0px -441px no-repeat;
+}
+.icon-home-orange{
+    background: url("../images/icon1.png") -66px -445px no-repeat;
+    width: 18px;
+    height: 16px;
+}
+.icon-home-edit{
+    background: url("../images/icon1.png") -24px -411px no-repeat;
+}
+.icon-home-company{
+    background: url("../images/icon1.png") -58px -411px no-repeat;
+}
+.icon-home-wifi{
+    background: url("../images/icon1.png") -85px -411px no-repeat;
+}
+.icon-home-book{
+    background: url("../images/icon1.png") -116px -411px no-repeat;
+}
+.icon-home-identification{
+    background: url("../images/icon1.png") -86px -445px no-repeat;
+    height: 22px;
+    width: 70px;
+}
+.icon-home-reward{
+    background: url("../images/icon1.png") -34px -445px no-repeat;
+    height: 22px;
+}
+.home-need-content{
+    width: 100%;
+    margin-top: 40px;
+}
+.home-need-content div{
+    margin-top:10px;
+}
+.home-recruit-button{
+    display: block;
+    border: 1px solid #02b8e7;
+    color: #02b8e7;
+    border-radius: 4px;
+    width: 160px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+}
+.home-recruit-button:hover{
+    background: #02b8e7;
+    color: #fff;
+}
+/*back nav*/
+.back-innerNav{
+    font-size: 14px;
+    color: #202020;
+    margin: 12px auto;
+    /*padding: 12px 0px;*/
+}
+.back-nav-font{
+    font-size: 16px;
+    padding: 0px 4px;
+}

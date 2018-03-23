@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <title>绑定成功</title>
+    <link rel="stylesheet" href="./static/css/media.css"/>
+    <link rel="stylesheet" href="./static/css/test.css"/>
+    <script src="./static/js/jquery-1.8.3.min.js"></script>
+  <!--   <script src="./static/js/codevality.js"></script> -->
+</head>
+<body style="background: #fff;">
+<div id="wrap">
+   <!--  <div class="header">
+        <div class="titlehead">
+            <span class="back" onclick="window.location.href='index.html'"><img src="./static/images/back.png" alt=""></span>
+            <div class="nameinfo">绑定成功</div>
+        </div>
+    </div> -->
+    <div class="inner">
+        <div class="bindimg">
+            <img src="./static/images/bind1.png" alt="">
+                <p class="jie"><span>雇TA请求已发送</span><br>等待雇员的回复，请及时查看雇员消息</p>
+                <div class="form_group">
+                    <p><label for="">服务名称：</label><span id="post_type_name"></span></p>
+                    <p><label for="">服务方式：</label><span id="service_mode"></span></p>
+                    <p><label for="">预约时间：</label><span id="date"></span>
+                  <br><span id="time"></span></p>
+                    <p><label for="">预约地点：</label><span id="service_address"></span></p>
+                </div>
+        </div>
+
+        <div class="findoddjob">
+            <button class="btnsubmit" onclick='window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=gongren.com.dlg"'>下载打零工，查看雇员消息</button>
+        </div>
+    </div>
+</div>
+
+<script>
+            var post_type_name = localStorage["post_type_name"];
+            var date = localStorage["date"];
+            var time = localStorage["time"];
+            var service_address = localStorage["service_address"];
+            var service_mode = localStorage["service_mode"];
+    
+       $(function () {
+    	   $("#post_type_name").html(post_type_name);
+    	   $("#service_address").html(service_address);
+    	   $("#date").html(date);
+    	   $("#time").html(time);
+    	   $("#service_mode").html(service_mode);
+   	       
+    })
+</script>
+</body>
+</html>

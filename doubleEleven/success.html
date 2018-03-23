@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>恭喜注册成功</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link rel="stylesheet" href="./static/css/main.css"/>
+</head>
+<body class="success_bg">
+<header class="success_header">
+    <img id="success_header" src="static/images/success_header.png"/>
+</header>
+<footer class="success_footer">
+    <a href="http://a.app.qq.com/o/simple.jsp?pkgname=gongren.com.dlg">
+        <img src="static/images/success_btn1.png"/>
+    </a>
+    <a href="javascript:void(0);" onclick="showAll('#model', '#modal-box');">
+        <img src="static/images/success_btn2.png"/>
+    </a>
+</footer>
+<div id="mask" class="mask" onclick="hideAll('#model')"></div>
+<div id="model" class="model"></div>
+<div id="modal-box" style="display:none;">
+    <div class="modalbox">
+        <div class="ac-success">
+            <img src="static/images/share.png"/>
+        </div>
+    </div>
+</div>
+</body>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+<script src="static/js/index.js"></script>
+<script>
+    $(function () {
+        getWxKey();
+    })
+    function getWxKey() {
+        $.ajax({
+            async: false,
+            url: url + "/api/appHtmlRestApi/queryWchatShare",
+            data: {
+                format: "json",
+                detailsUrl: window.location.href
+            },
+            type: 'post',
+            success: function (data) {
+                if (data.code == 0) {
+                    var wxData = data.data[0];
+                    wx.config({
+                        debug: false,
+                        appId: wxData.appid,
+                        timestamp: wxData.timestamp,
+                        nonceStr: wxData.noncestr,
+                        signature: wxData.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    wx.ready(function () {
+                        var shareData = {
+                            title: "您的好友已经领取100元奖励，您也来领吧",
+                            desc: "“打零工”参战双十一，1,000,000现金等你抢",
+                            link: webUrl+"/register.html?inviterPhone=" + getQueryVariable("inviterPhone"),
+                            imgUrl: wxData.userLogo,
+                            success: function (res) {
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                            }
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                        wx.onMenuShareQQ(shareData);
+                        wx.onMenuShareQZone(shareData);
+                        wx.onMenuShareWeibo(shareData);
+                    });
+                    wx.error(function (res) {
+                        console.log(res);
+                    });
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        })
+    }
+</script>
+</html>

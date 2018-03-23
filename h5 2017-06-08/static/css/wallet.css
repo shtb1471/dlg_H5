@@ -1,0 +1,1025 @@
+@charset "UTF-8";
+
+.button {
+    padding: 0.6em 1%;
+    border-radius: 6px;
+    margin: 0 1% 10px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .3s;
+}
+
+.button-o,.button-o:focus {
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    font-size: 1em;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .3s;
+    background: #ffb552;
+    color: #ffffff;
+}
+
+.button-o:disabled {
+    background: #c6c5c5;
+}
+
+/*oddJobList 雇主零工*/
+.job-tabs {
+    /*margin-top:2px;*/
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.job-tabs ul {
+    width: 100%;
+    overflow: hidden;
+}
+
+.job-tabs ul li {
+    float: left;
+    list-style: none;
+    width: 25% !important;
+    width: calc(100% / 4);
+    text-align: center;
+    cursor: pointer;
+}
+
+.job-tabs ul li span {
+    display: inline-block;
+    padding: 6px 0px;
+    color: #7e7e7e;
+    font-size: 0.8em;
+}
+
+.job-tabs ul li:hover span, .job-tabs ul li.active span {
+    color: #ffb452;
+    border-bottom: 2px solid #ffb452;
+}
+
+/*release 发布零工*/
+.release-box {
+    margin-top: 12px;
+    background: #ffffff;
+    padding: 0px 4%;
+}
+
+.release-box div {
+    padding: 12px 0px;
+    border-bottom: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+
+.release-box div input, .release-box div textarea {
+    width: 78%;
+    float: right;
+    text-align: right;
+    border: none;
+    background: #fff;
+    color: #626262;
+    font-size: 0.8em;
+    margin: 0px;
+    position: relative;
+    top: 3px;
+}
+
+.release-box div input.small {
+    width: 20%;
+    background: #f0f0f0;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.release-box div span.smallSplit {
+    float: right;
+    width: 4%;
+}
+
+.release-box div input:focus, .release-box div textarea:focus {
+    outline: none;
+}
+
+.release-box div label {
+    float: right;
+}
+
+.release-box div label.unit {
+    font-size: 0.8em;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 2px 15px;
+    margin: 0px 2px;
+    color: #888888;
+}
+
+.release-box div label.active, .release-box div label.unit:hover {
+    border: 1px solid #ffb452;
+    color: #ffb452;
+}
+
+.release-box div label a.arrow {
+    color: #202020;
+}
+
+/*oddJobType*/
+.type-list {
+    background: #ffffff;
+    margin-top: 12px;
+}
+
+.type-list ul {
+}
+
+.type-list ul li {
+    list-style: none;
+    border-bottom: 1px solid #f0f0f0;
+    overflow: hidden;
+    padding: 12px 4%;
+}
+
+.type-list ul li span {
+    float: left;
+}
+
+.type-list ul li i {
+    float: right;
+    display: none;
+}
+
+/*operate employer 零工 雇主*/
+.operate-header {
+    position: relative;
+    z-index: 4;
+}
+
+.operate-tips {
+    width: 92%;
+    background: #ffb452;
+    color: #ffffff;
+    padding: 4px 2%;
+    margin: 0px auto 8px;
+    border-radius: 4px;
+    font-size: 0.6em;
+    text-align: left;
+    overflow: hidden;
+}
+
+.operate-tips span {
+    font-size: 1.6em;
+    position: absolute;
+    right: 4%;
+    top: 1px;
+    width: 22px;
+    text-align: right;
+    height: 22px;
+}
+
+.operate-box {
+    width: 100%;
+    margin: 0px auto;
+    background: #ffffff;
+}
+.midContent{
+}
+.operate-info, .operate-info-e {
+    padding: 15px 2%;
+    overflow: hidden;
+    line-height: 1.6;
+    margin: 0px auto;
+
+}
+
+.operate-info div.pull-left:first-of-type,
+.operate-info-e div.pull-right {
+    width: 20%;
+    text-align: center;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+.operate-info div.pull-left:first-of-type {
+    float: left;
+}
+
+.operate-info-e div.pull-right {
+    float: right;
+    /*padding-top: 10px;*/
+}
+
+.operate-info-e div.pull-right .gray-color {
+    font-size: 0.8em;
+}
+
+.operate-info div.pull-left:first-of-type img,
+.operate-info-e div.pull-right #detailLogo {
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.operate-info div.pull-middle {
+    float: left;
+    width: 60%;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.operate-info-e div.pull-left {
+    width: 80%;
+    float: left;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.operate-info div.pull-middle .title,
+.operate-info-e div.pull-left .title {
+    font-size: 1em;
+}
+
+.operate-info div.pull-middle .title span,
+.operate-info-e div.pull-left .title span {
+    font-size: 0.8em;
+}
+
+.operate-info-e div.pull-left .title span {
+    padding: 2px 6px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    font-size: 0.6em;
+}
+
+.operate-info-e div.pull-left .title .waring-color {
+    font-size: 1.2em;
+}
+
+.operate-info div.pull-middle .center,
+.operate-info-e div.pull-left .center {
+    font-size: 0.8em;
+}
+
+.operate-info div.pull-middle .center i,
+.operate-info-e div.pull-left .center i {
+    color: #e6e6e6;
+}
+
+.operate-info div.pull-middle .center i.icon-star,
+.operate-info-e div.pull-left .center i.icon-star {
+    color: #ffb452;
+}
+
+.operate-info div.pull-middle .content {
+    color: #888888;
+    font-size: 0.6em;
+}
+
+.operate-info-e div.pull-left .center {
+    color: #888888;
+    font-size: 0.8em;
+}
+
+.operate-info div.pull-right {
+    float: right;
+    width: 20%;
+    font-size: 0.6em;
+    line-height: 2;
+}
+
+.operate-info div.pull-right i {
+    font-size: 2.8em;
+}
+
+.btn-operate {
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.x-lists, .lists3, .lists4 {
+    width: 100%;
+    overflow: hidden;
+}
+
+.x-lists li,
+.lists3 li,
+.lists4 li {
+    float: left;
+    list-style: none;
+    height: 42px;
+    line-height: 42px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.x-lists li a,
+.lists3 li a,
+.lists4 li a {
+    color: #202020;
+}
+
+.x-lists li {
+    width: 50%;
+}
+
+.lists3 li {
+    width: 33.333%;
+}
+
+.lists4 li {
+    width: 25%;
+}
+
+.lists3 li a.split,
+.lists4 li a.split {
+    line-height: 20px;
+    display: inline-block;
+    width: 99%;
+    height: 20px;
+    border-right: 1px solid #f0f0f0;
+}
+
+.btn-operate-o {
+    width: 100%;
+    height: 42px;
+    line-height: 1.4;
+    color: #ffffff;
+    background: #ffb452;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .3s;
+}
+
+.btn-operate-o:disabled {
+    background: #c6c5c5;
+}
+
+/*operate employee 零工 雇员*/
+
+/*
+.btn-operate-o:hover {
+    color: #ffffff;
+    background: #f1a118;
+}*/
+.operate-info-detail {
+    position: relative;
+    padding: 15px 2%;
+    line-height: 1.6;
+    margin: 0px auto;
+}
+
+.operate-info-detail img {
+    position: absolute;
+    width: 64px;
+    top: -32px;
+    left: 40%;
+    z-index: 4;
+    border-radius: 50%;
+}
+
+.detail-content {
+    margin: 0px auto;
+    padding: 15px 4%;
+}
+
+/*pingjia 评价*/
+.article-box {
+    border-bottom: 1px solid #f0f0f0;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.article-content {
+    width: 92%;
+    margin: 0px auto;
+    padding: 12px 0px;
+    overflow: hidden;
+}
+
+.article-box .pull-left {
+    float: left;
+}
+
+.article-box .article-logo {
+    width: 20%;
+    line-height: 38px;
+}
+
+.article-box .article-logo img {
+    max-width: 100%;
+    width: 3em;
+    border-radius: 100%;
+    vertical-align: middle;
+}
+
+.article-info {
+    width: 40%;
+    padding-top: 4px;
+}
+
+.article-info i {
+    color: #c6c5c5;
+}
+
+.article-info .title {
+    font-size: 1em;
+}
+
+.article-info .title span {
+    font-size: 0.6em;
+    color: #ffb452;
+}
+
+.article-box .pull-right {
+    float: right;
+    width: 40%;
+    line-height: 45px;
+    text-align: right;
+}
+
+.article-box .pull-right a {
+    color: #202020;
+}
+
+.icon-phone {
+    font-size: 1.6em;
+    color: #888888;
+}
+
+.star-tabs {
+    text-align: center;
+    margin: 0px auto;
+}
+
+.star-tabs i {
+    color: #c6c5c5;
+    cursor: pointer;
+}
+
+.judge-box {
+    background: #ffffff;
+    padding: 12px 0px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 12px;
+}
+
+.judge-tip {
+    height: 2em;
+    font-size: 0.8em;
+    text-align: center;
+    color: #ff7a52;
+    margin: 12px auto;
+}
+
+.judge-next-tip {
+    text-align: center;
+    width: 88%;
+    margin: 0px auto;
+}
+
+.judge-next-tip span {
+    display: block;
+    width: 47%;
+    height: 3em;
+    float: left;
+    font-size: 0.8em;
+    line-height: 3em;
+    border-radius: 6px;
+    margin: 0 1% 10px;
+}
+
+.btn-judge {
+    border: 1px solid #f0f0f0;
+    background-color: #fff;
+    color: #626262;
+}
+
+.btn-judge:hover, .btn-judge.active {
+    border-color: #fee2b2;
+    color: #ffb452;
+    background: #f7f7f7;
+}
+
+.btn-judge-o {
+    width: 92%;
+    height: 42px;
+    line-height: 1.4;
+    color: #ffffff;
+    background: #ffb452;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .3s;
+}
+
+.btn-judge-o:hover {
+    color: #ffffff;
+    background: #f1a118;
+}
+
+.judge-footer {
+    margin: 0px auto;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    z-index: 200;
+}
+
+.form-textarea {
+    width: 96%;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    resize: none;
+    padding: 0.6em 2%;
+    background: #fafafa;
+}
+
+.star-tabs i.icon-star, .article-info i.icon-star {
+    color: #ffb452;
+}
+
+/*cancel order 取消订单*/
+.cancel-order-box {
+    border-top: 1px solid #f0f0f0;
+    background: #ffffff;
+    text-align: center;
+    padding: 12px 0px;
+}
+
+.cancel-order-box div {
+    padding: 4px 0px;
+}
+
+.cancel-fee {
+    background: #ffffff;
+    padding: 8px 4%;
+    overflow: hidden;
+    margin: 8px auto;
+}
+
+.cancel-fee .pull-left {
+    float: left;
+    width: 20%;
+}
+
+.cancel-fee .pull-right {
+    float: right;
+    width: 20%;
+    text-align: right;
+}
+
+.icon-cancel {
+    font-size: 3em;
+    color: #ffb452;
+}
+
+.cancel-radio-box {
+    padding: 12px 4% 25px;
+    background: #ffffff;
+}
+
+.cancel-radio-box h5 {
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.cancel-radio-box div {
+    padding: 15px 0px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cancel-radio-box div.radio {
+    display: block;
+    float: right;
+    width: 20%;
+    border: none;
+    padding: 10px 0px;
+}
+
+.cancel-radio-box div.radio input {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    margin: auto; /* 这里及以上的定位，可以让该元素竖直居中。(top: 0; bottom: 0;) */
+    opacity: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.cancel-radio-box div.radio span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    margin: auto;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.cancel-radio-box div.radio span.active {
+    background-color: #00bf74;
+    color: #ffffff;
+}
+
+.cancel-radio-box div input[type="radio"] {
+    float: right;
+}
+
+/*wallet 我的钱包*/
+.wallet-main {
+    background: #ffffff;
+}
+
+.wallet-header {
+
+}
+
+.wallet-box {
+    color: #ffffff;
+    background: url("../images/wallet_bg.jpg") no-repeat center #f1a118;
+    text-align: center;
+    padding-bottom: 24px
+}
+
+.wallet-box a.detail {
+    position: relative;
+    display: block;
+    text-align: right;
+    padding-top: 20px;
+    width: 92%;
+    margin: 0px auto;
+}
+
+.wallet-box div {
+    padding: 4px;
+}
+
+.wallet-box div h3 {
+    font-size: 2.2em;
+    font-weight: 500;
+    text-shadow: 4px 0px 4px rgba(255, 171, 0, 0.75);
+}
+
+.wallet-box div h3 a {
+    font-size: 0.4em;
+    color: #ffffff;
+}
+
+.iconfont-mini {
+    font-size: 1em;
+    opacity: 0.5;
+    position: absolute;
+    top: 8px;
+    right: 0%;
+    color: #FFD8A4;
+}
+
+.iconfont-1x {
+    font-size: 0.8em;
+    position: relative;
+    top: -4px;
+}
+
+.wallet-part {
+    width: 96%;
+    margin-top: 12px;
+    background: #ffffff;
+    padding: 0px 2%;
+}
+
+.wallet-part a {
+    display: block;
+    padding: 12px 0px;
+    color: #202020;
+    line-height: 1.4em;
+}
+
+.wallet-part a i {
+    color: #888;
+    vertical-align: middle;
+}
+
+.wallet-part a i.big {
+    font-size: 1.7em;
+}
+
+.wallet-part a i.small {
+    font-size: 1.3em;
+}
+
+.wallet-part a i.mid {
+    font-size: 1.5em;
+}
+
+.wallet-arrow {
+    float: right;
+    line-height: 1.5;
+}
+
+.wallet-part div
+    /*account  账单明细*/
+.account-main {
+    padding-bottom: 60px;
+}
+
+.account-box {
+}
+
+.account-tab {
+    /*margin-top:2px;*/
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.account-tab ul {
+    width: 100%;
+    overflow: hidden;
+}
+
+.account-tab ul li {
+    float: left;
+    list-style: none;
+    width: 33.333% !important;
+    width: calc(100% / 3);
+    text-align: center;
+    cursor: pointer;
+}
+
+.account-tab ul li span {
+    display: inline-block;
+    padding: 6px 0px;
+    color: #7e7e7e;
+    font-size: 0.8em;
+}
+
+.account-tab ul li:hover span, .account-tab ul li.active span {
+    color: #ffb452;
+    border-bottom: 2px solid #ffb452;
+}
+
+.account-date {
+    font-size: 0.8em;
+    color: #888;
+    padding: 4px 4%;
+}
+
+.account-list {
+    background: #ffffff;
+    padding: 0px 4%;
+}
+
+.list-part tr td {
+    line-height: 1em;
+    vertical-align: middle;
+    padding: 12px 0px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.list-part tr td div {
+    padding: 2px 0px;
+}
+
+.list-part tr td div:last-of-type {
+    font-size: 0.8em;
+    color: #888888;
+}
+
+/*account detail 账单详情*/
+
+.accountD-box {
+    background: #ffffff;
+    text-align: center;
+    padding: 20px 0px 24px 0px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.accountD-box div {
+    padding: 4px;
+}
+
+.accountD-box div img {
+    width: 16px;
+    vertical-align: middle;
+}
+
+.accountD-box div span {
+    vertical-align: middle;
+}
+
+.accountD-box div h3 {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.accountD-container {
+    background: #ffffff;
+    padding: 0px 4%;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.accountD-container div.detail-part {
+    overflow: hidden;
+    border-top: 1px solid #f0f0f0;
+    padding: 6px 0px;
+}
+
+.accountD-container div div.pull-left {
+    float: left;
+    width: 30%;
+    color: #888888;
+}
+
+.accountD-container div div.pull-right {
+    float: right;
+    width: 70%;
+    text-align: right;
+}
+
+.accountD-container div div.pull-right div {
+    font-size: 0.8em;
+    text-align: left;
+    padding: 4px 0px;
+}
+
+.accountD-container div div.pull-right span:last-of-type {
+    display: block;
+    float: right;
+}
+
+.iconsuc {
+    font-size: 1.2em;
+    color: #00bf74;
+}
+
+.accountD-container div div.pull-right div.process {
+    padding: 0px 5px;
+    line-height: 10px;
+    position: relative;
+    top: -1px;
+    color: #00bf74;
+}
+
+/*odd job list  雇员列表*/
+.odd-job-list {
+    width: 96%;
+    margin: 0px auto;
+}
+
+.part-box {
+    background: #ffffff;
+    margin-top: 12px;
+    border-radius: 6px;
+}
+
+.part-box div.part {
+    padding: 6px 2%;
+    line-height: 1.4;
+    border-top: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+
+.part-box div.part:first-of-type {
+    border: none;
+}
+
+.part-box div.part .pull-left {
+    float: left;
+    width: 50%;
+    line-height: 1.8;
+}
+
+.part-box div.part .pull-left .title {
+    color: #202020;
+}
+
+.part-box div.part .pull-left span.gray-color {
+    padding: 2px 6px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    font-size: 0.6em;
+}
+
+.part-box div.part .pull-left .content {
+    color: #7e7e7e;
+    font-size: 0.8em;
+}
+
+.part-box div.part .pull-right {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+.part-box div.part .pull-right span.gray-td-color {
+    font-size: 0.6em;
+    line-height: 1;
+}
+
+.part-box div.part .pull-right .orange-color {
+    line-height: 3.2;
+}
+
+.part-box div.part .pull-right i {
+    font-size: 0.8em;
+    line-height: 1.4;
+    color: #ffb452;
+}
+
+/*change password 修改密码*/
+.update-box {
+    border-top: 1px solid #f0f0f0;
+    background: #ffffff;
+    padding: 0px 2%;
+    text-align: center;
+}
+
+.update-box div {
+    padding: 6px 0;
+    margin: 0px auto;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.update-box div input {
+    width: 94%;
+    margin: 0px auto;
+    height: 32px;
+    line-height: 32px;
+    padding: 0px 2%;
+    outline: none;
+    border: none;
+}
+
+.btn-reset {
+    width: 96%;
+    margin: 20px auto 0px;
+    text-align: center;
+    background: #ffb452;
+    color: #ffffff;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    padding: 8px 0px;
+    border-radius: 6px;
+}
+
+.btn-reset:focus {
+    color: #ffffff;
+    background: #f1a118;
+}
+
+/*help 帮助*/
+.help-box {
+    border-top: 1px solid #f0f0f0;
+    padding: 1px 4%;
+    margin-bottom: 20px;
+}
+.help-box h4{
+    color: #f1a118;
+    font-weight: normal;
+    margin: 8px 0px;
+}
+.help-box div{
+    font-size: 0.8em;
+    color: #888;
+    text-align: justify;
+    line-height: 22px;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打零工备战双11</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link rel="stylesheet" href="./static/css/main.css"/>
+</head>
+<body class="detail_bg">
+<header class="detail_header">
+    <img src="static/images/content_bg.png"/>
+    <div class="detail_title">
+        <img src="static/images/content_top.png"/>
+        <div>
+            <img src="static/images/content_title.png" alt=""/>
+        </div>
+    </div>
+    <img class="shareBtn" src="static/images/shareBtn.png" onclick="shareBtn()"/>
+</header>
+<section class="detail_content">
+    <div>
+        活动时间：2017年11月10日~11月13日<br>
+        活动对象：仅针对新注册企业用户<br>
+    </div>
+    <div>
+        活动规则：<br>
+        1.新企业用户现场扫描二维码或通过分享参与活动；<br>
+        2.在活动期间完成企业账户注册并通过资质审核即可得到100元现金奖励；<br>
+        3.提现任务完成后，奖金即可提取；<br>
+        4.分享给同道好友，好友在线完成1个不低于50元的零工订单，即可得到50元奖励；<br>
+        5.每个新注册企业用户最多获得10次分享奖励；<br>
+        6.奖励金额有限，先到先得；<br>
+
+        <span>注：一经发现恶意刷单或虚假订单，取消活动参与资格</span><br>
+    </div>
+    <div>
+        提现任务：<br>
+        1.新注册企业为真实合法的续存企业，并通过企业资质审核；<br>
+        2.新注册企业或奖金绑定账户至少成交1个不低于50元的真实零工订单；<br>
+    </div>
+</section>
+<footer class="detail_footer">
+    <img src="./static/images/content_bottom.png" draggable="false"/>
+    <div class="detail_ewm">
+        <img id="wxEwm" src="static/images/ewm.png">
+        <div class="detail_footer_txt">扫描参与活动</div>
+    </div>
+</footer>
+<div id="mask" class="mask" onclick="hideAll('#model')"></div>
+<div id="model" class="model"></div>
+<div id="modal-box" style="display:none;">
+    <div class="modalbox">
+        <div class="ac-success">
+            <img src="static/images/share.png"/>
+        </div>
+    </div>
+</div>
+<div id="code" style="display: none"></div>
+<script src="./static/js/jquery-1.8.3.min.js"></script>
+<script src="./static/js/jquery.qrcode.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+<script src="./static/js/index.js"></script>
+<script>
+    $(function () {
+        getWxKey();
+    })
+    function shareBtn() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        var shareUrl=encodeURIComponent(window.location.href);
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            showAll('#model','#modal-box');
+        }else{
+            window.location.href = 'dlg://share'
+                +'?title= "您的好友已经领取100元奖励，您也来领吧'
+                + '&msg=“打零工”参战双十一，1,000,000现金等你抢'
+                + '&img=http://s.chengxinhutong.com/dds/img/gongren/dlg/logo/559561/s839450436430860288.png'
+                + '&url=' +shareUrl
+        }
+    }
+    function getWxKey() {
+        $.ajax({
+            async: false,
+            url: url + "/api/appHtmlRestApi/queryWchatShare",
+            data: {
+                format: "json",
+                detailsUrl: window.location.href
+            },
+            type: 'post',
+            success: function (data) {
+                if (data.code == 0) {
+                    var wxData = data.data[0];
+                    wx.config({
+                        debug: false,
+                        appId: wxData.appid,
+                        timestamp: wxData.timestamp,
+                        nonceStr: wxData.noncestr,
+                        signature: wxData.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    wx.ready(function () {
+                        var shareData = {
+                            title: "您的好友已经领取100元奖励，您也来领吧",
+                            desc: "“打零工”参战双十一，1,000,000现金等你抢",
+                            link: webUrl+"/register.html?userId=" + getQueryVariable("userId"),
+                            imgUrl: wxData.userLogo,
+                            success: function (res) {
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                            }
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                        wx.onMenuShareQQ(shareData);
+                        wx.onMenuShareQZone(shareData);
+                        wx.onMenuShareWeibo(shareData);
+                    });
+                    wx.error(function (res) {
+                        console.log(res);
+                    });
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        })
+    }
+    $("#code").qrcode({
+        height: 256,
+        text: webUrl+"/register.html?userId=" + getQueryVariable("userId")
+    });
+
+</script>
+</body>
+</html>

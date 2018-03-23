@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <title>登录</title>
+    <link rel="stylesheet" href="./static/css/media.css"/>
+    <link rel="stylesheet" href="./static/css/test.css"/>
+</head>
+<body>
+<div id="wrap">
+    <div class="header">
+        <div class="titlehead">
+            <span class="back" onclick="window.location.href='register.html'"></span>
+            <div class="nameinfo">登录</div>
+        </div>
+    </div>
+    <div class="inner">
+        <img src="static/images/login_banner.png" alt="">
+    </div>
+    <div class="inner">
+        <div class="err1">
+        </div>
+        <div class="phone_number">
+            <div class="input_group">
+                <label for="tel" class="label_img"><img src="./static/images/p.png" alt=""></label>
+                <input id="phonetest" type="tel" name="tel" placeholder="输入手机号" maxlength="11"
+                       onkeyup="value=value.replace(/[^\d]/g,'')"/>
+            </div>
+            <div class="input_group" style="position: relative;">
+                <label for="password" class="label_img"><img src="./static/images/s.png" alt=""></label>
+                <input type="password" name="password" id="password" minlength="6" maxlength="16" value="" placeholder="登录密码（6-16位）"
+                       readonly onfocus="this.removeAttribute('readonly');" />
+                <img src="./static/images/by.png" alt="" class="by" id="by">
+            </div>
+        </div>
+        <div class="input_group_tip">
+            <div class="err">
+            </div>
+        </div>
+        <div class="findoddjob">
+            <button class="btnsubmit">登录</button>
+        </div>
+        <p class="change_register">—— <a href="register.html">注册</a> ——</p>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="./static/js/login.js"></script>
+<script src="./static/js/layer.js"></script>
+<script src="./static/js/md5.js"></script>
+</body>
+</html>

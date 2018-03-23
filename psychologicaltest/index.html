@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon" /> -->
+  <title>心理测试</title>
+  <link rel="stylesheet" href="css/media.css" />
+  <link rel="stylesheet" href="css/test.css" />
+</head>
+<body>
+  <div id="wrap">
+  	 <header>
+  	 	<!-- div class="titlehead">
+            <span><img src="images/back.png" alt=""></span> 
+            <span class="share" onclick="shareBtn()"><img src="images/share.png" alt=""></span>
+        </div> -->
+  	 </header>
+ 	<div class="navintru">
+ 		<div class="userLogo">
+ 			<img src="images/boss.png" alt="">
+ 			<div>赵腾达<span>心理学专家<span>已认证</span></span></div>
+ 		</div>
+ 		<ul>
+ 			<li>咨询人数<span>1686</span></li>
+ 			<li>好评率<span>99.7%</span></li>
+ 			<li>验收通过率<span>100%</span></li>	
+ 		</ul>
+ 	</div>
+ 	<div class="section">
+ 		<p class="title"><img src="images/zjjs.png" alt="">专家介绍</p>
+ 		<p class="intro">赵腾达，知名心理学专家，资深人力资源管理师，"真我"创始人，国家卫计委中国医疗保健国际交流促进会诚信建设部主任，中国诚信研究会副会长。
+ 		拥有11年心理咨询经验，运用科学理论帮助近万人了解了生活和工作中的问题。</p>
+ 	</div>
+	<div class="section">
+ 		<p class="title"><img src="images/scly.png" alt="">擅长领域</p>
+ 		<div class="intro">
+ 			<ul class="techang">
+ 				<li><img src="images/zyxz1.png" alt=""> 
+ 					<div>职业选择
+ 						<span> 
+		 					<span>496</span>人咨询
+		 				</span>
+	 				</div>
+	 			</li>
+	 			<li> <a href="CareerChoice.html">了解详情</a> </li>
+ 			</ul>
+ 			<ul class="techang">
+ 				<li><img src="images/hlfx1.png" alt=""> 
+ 					<div>婚恋分析
+ 						<span> 
+		 					<span>602</span>人咨询
+		 				</span>
+	 				</div>
+	 			</li>
+	 			<li> <a href="CouplesAlong.html">了解详情</a> </li>
+ 			</ul>
+ 			<ul class="techang">
+ 				<li><img src="images/fuqi1.png" alt=""> 
+ 					<div>夫妻相处
+ 						<span> 
+		 					<span>588</span>人咨询
+		 				</span>
+	 				</div>
+	 			</li>
+	 			<li> <a href="CharacterTest.html">了解详情</a> </li>
+ 			</ul>
+ 		</div>
+ 	</div>
+ 	<div class="section lastsection">
+ 		<p class="title"><img src="images/zxzpj.png" alt="">咨询者评价</p>
+ 		<div class="intro"><span class="graybtn">经验丰富</span><span class="graybtn">判断准确</span><span class="graybtn">热情亲切</span><span class="graybtn">幽默风趣</span></div>
+ 	</div>
+  </div>
+ 	<div class="footer">
+ 		<div class="intro introfooter">
+ 			<a href="javascript:void(0);" onclick="shareBtn()"><img src="images/shareicon.png" alt=""><span>扩散</span></a>
+ 			<!-- <a href="javascript:void(0);">收藏</a> -->
+            <a href="javascript:void(0);" onclick="hireBtn()">雇TA</a>
+ 		</div>
+ 	</div>
+    <div class="bg_ground"> 
+        <img src="images/share2.png" alt="" class="imgshare">
+    </div>
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+ <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+ <script>
+    var url = "http://dlg.dalinggong.com/v_2_4";
+    $(function () {
+        getWxKey();
+    })
+
+    function hireBtn(){
+       var ua = window.navigator.userAgent.toLowerCase();
+        var shareUrl=encodeURIComponent(window.location.href);
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=gongren.com.dlg"
+        }else{
+            window.location.href = 'dalinggong://serviceDetail?serviceId=27875936402113171696959394598'
+        }
+    }
+
+    function shareBtn() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        var shareUrl=encodeURIComponent(window.location.href);
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            // showAll('#model','#modal-box');
+            $(".bg_ground").show();
+            $(".bg_ground").click(function(){
+                $(this).hide();
+            })
+        }else{
+            window.location.href = 'dlg://share'
+                +'?title= "原来我是这样的人！"'
+                + '&msg="最权威的心理测试，助你了解真我，教你与人相处"'
+                + '&img=http://s.chengxinhutong.com/dds/img/gongren/dlg/logo/559561/s839450436430860288.png'
+                + '&url=' +shareUrl
+        }
+    }
+    function getWxKey() {
+        $.ajax({
+            async: false,
+            url: url + "/api/appHtmlRestApi/queryWchatShare",
+            data: {
+                format: "json",
+                detailsUrl: window.location.href
+            },
+            type: 'post',
+            success: function (data) {
+                if (data.code == 0) {
+                    var wxData = data.data[0];
+                    wx.config({
+                        debug: false,
+                        appId: wxData.appid,
+                        timestamp: wxData.timestamp,
+                        nonceStr: wxData.noncestr,
+                        signature: wxData.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    wx.ready(function () {
+                        var shareData = {
+                            title: "原来我是这样的人！",
+                            desc: "最权威的心理测试，助你了解真我，教你与人相处",
+                            link:"",
+                            imgUrl: wxData.userLogo,
+                            success: function (res) {
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                            }
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                        wx.onMenuShareQQ(shareData);
+                        wx.onMenuShareQZone(shareData);
+                        wx.onMenuShareWeibo(shareData);
+                    });
+                    wx.error(function (res) {
+                        console.log(res);
+                    });
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        })
+    }
+ </script>
+</body>
+</html>	

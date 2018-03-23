@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>打零工-登录</title>
+    <link href="static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="loginBox">
+        <div class="loginH">
+            <a href="javascript:void(0)" onclick="choiceLogin()">验证码登录？</a>
+        </div>
+        <div style="width: 80px;text-align: center;margin: 0px auto 20px;">
+            <img style="width: 100%" src="http://s.chengxinhutong.com/dds/img/gongren/dlg/logo/559561/s839450436430860288.png" />
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="phone"><img src="static/images/phone.png"/> </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input type="number" id="phone" placeholder="请输入手机号"/>
+            </div>
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="verifyCode"><img src="static/images/verify.png"/> </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input id="verifyCode" type="password" placeholder="请输入验证码"/>
+                <button id="verifyBtn" style="display: none;background: transparent;border: 0;float: right; height: 42px;padding: 0px 2%;" type="button" onclick="getTime(this)">验证码</button>
+            </div>
+        </div>
+        <div class="dlg-group a-login">
+            <a href="javascript:void(0)" onclick="window.location.href='register.html'">没有账户？前往注册</a>
+        </div>
+        <div class="dlg-group" style="margin-top:84px;">
+            <button id="submitBtn" class="dlg-btn btn-default" onclick="btnSubmit()">登&nbsp;&nbsp;录</button>
+        </div>
+    </div>
+</div>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script src="static/js/layer_mobile/layer.js"></script>
+<script src="static/js/demo.js"></script>
+<script type="text/javascript">
+    function choiceLogin() {
+        $("#verifyCode").val("");
+        $('#verifyBtn').toggle();
+        if ($('#verifyBtn').css("display")=="none") {
+            document.getElementById("verifyCode").type = "password";
+            $(this).html("返回登录？");
+        } else {
+            document.getElementById("verifyCode").type = "number";
+            $(this).html("验证码登录？");
+        }
+    }
+    $("#phone").bind('keyup', function () {
+        if ($("#phone").val().length == 11) {
+            $("#submitBtn").removeClass("btn-default").addClass("btn-login-big");
+        } else {
+            $("#submitBtn").removeClass("btn-login-big").addClass("btn-default");
+        }
+    })
+    function btnSubmit() {
+        var phone = $("#phone"),html="";
+        var verifyCode = $("#verifyCode");
+        if (!verifyArray(phone.val(), RegEx.xx_phone)) {
+            layer.open({
+                content: '!&nbsp;请输入正确的手机号'
+                , skin: 'msg'
+                , time: 2 //2秒后自动关闭
+            });
+            phone.focus();
+            return false;
+        }
+        if (verifyCode.val() == "") {
+            if($("#verifyCode").attr("type")=="password"){
+                html="!&nbsp;请输入密码";
+            }else{
+                html="!&nbsp;请输入验证码";
+            }
+            layer.open({
+                content: html
+                , skin: 'msg'
+                , time: 2 //2秒后自动关闭
+            });
+            verifyCode.focus();
+            return false;
+        }
+        window.location.href = "success.html"
+    }
+</script>
+</body>
+</html>

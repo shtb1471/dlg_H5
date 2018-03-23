@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=0.5, minimum-scale=0.5"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <title>让工作上门找你</title>
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="pragram" content="no-cache">
+    <link rel="stylesheet" href="static/css/main.css"/>
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=640, user-scalable=no"/>
+    <script type="text/javascript">
+        if (navigator.userAgent.indexOf('Android') > -1) {
+            var densitydpi = 640 / screen.width * window.devicePixelRatio * 160;
+            var initialContent = 'target-densitydpi=' + densitydpi + ', width=640,user-scalable=no';
+            document.getElementsByName('viewport')[0].setAttribute('content', initialContent);
+        }
+    </script>
+</head>
+<body>
+<div class="main">
+    <header class="ac-header">
+        <img class="ac-logo" src="static/images/logox.png" alt="打零工">
+        <div class="ac-main_img">
+            <img src="static/images/head.png"/>
+        </div>
+    </header>
+    <div class="ac-content">
+        <div class="ac-groups">
+            <form action="" autocomplete="off">
+                <div class="ac-form-group">
+                    <label for="name">
+                        <span>姓      名：</span>
+                        <input id="name" name="name" type="text"/>
+                    </label>
+                </div>
+                <div class="ac-form-group">
+                    <label for="idCard">
+                        <span>身份证号：</span>
+                        <input id="idCard" name="idCard" type="text"/>
+                    </label>
+                </div>
+                <div class="ac-form-group">
+                    <label for="phone">
+                        <span>手 机 号：</span>
+                        <input id="phone" name="phone" type="text"/>
+                    </label>
+                </div>
+                <div style="overflow: hidden">
+                    <div class="ac-form-group small-input">
+                        <label for="verifyCode">
+                            <span>验 证 码：</span>
+                            <input id="verifyImgCode" name="verifyCode" type="text"/>
+                        </label>
+                    </div>
+                    <div class="ac-form-group small-button" onclick="getImgVerifyCode()">
+                        <img id="imgCode" src="" alt="图形验证码">
+                    </div>
+                    <input id="imgKey" type="hidden">
+                </div>
+                <div style="overflow: hidden">
+                    <div class="ac-form-group small-input">
+                        <label for="verifyCode">
+                            <span>验 证 码：</span>
+                            <input id="verifyCode" name="verifyCode" type="text"/>
+                        </label>
+                    </div>
+                    <div class="ac-form-group small-button">
+                        <button type="button" onclick="getVerifyCode(this)">获取验证码</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="ac-submit-button" onclick="submitInfo()">
+            <img src="static/images/button.png" alt="">
+        </div>
+    </div>
+    <footer id="dlgFooter" class="ac-footer">
+        <div class="ac-footer-box">
+            <div class="logo">
+                <img src="static/images/logo.png"/>
+            </div>
+            <span class="info">了解更多职位请下载打零工APP</span>
+            <a class="ac-down-btn" href="http://a.app.qq.com/o/simple.jsp?pkgname=gongren.com.dlg">
+                <img src="static/images/downloadBtn.png"/>
+            </a>
+
+            <div class="ac-close" onclick="javascript:document.getElementById('dlgFooter').style.display='none'">
+                <img src="static/images/closeCircle.png"/>
+            </div>
+        </div>
+    </footer>
+</div>
+<!--success-->
+<div id="errMsg" class="errMsg"></div>
+<div id="mask" class="mask"></div>
+<div id="model" class="model"></div>
+<div id="modal-box" style="display:none;">
+    <div class="modalbox">
+        <div class="ac-success">
+            <div class="x_close">
+                <img src="static/images/close.png" onclick="hideAll('#model')"/>
+            </div>
+
+            <div class="ac-success-content">
+                <div>
+                    <img src="static/images/success.png"/>
+                </div>
+                <div>恭喜报名成功</div>
+                <button onclick="hideAll('#model')">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script src="static/js/index.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?9ec5c087d859bb2f23439e15212f056c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script>
+    $(function () {
+        getImgVerifyCode();
+        window.addEventListener("resize", function () {
+            if (document.activeElement.tagName == "input") {
+                window.setTimeout(function () {
+                    document.activeElement.scrollIntoViewIfNeeded();
+                }, 0);
+            }
+        })
+    })
+    var timer, windowInnerHeight;
+    function eventCheck(e) {
+        if (e) { //blur,focus事件触发的
+            $('#dv').html('android键盘' + (e.type == 'focus' ? '弹出' : '隐藏') + '--通过' + e.type + '事件');
+            if (e.type == 'click') {
+                setTimeout(function () {
+                    windowInnerHeight = window.innerHeight;
+                    timer = setInterval(function () { eventCheck() }, 100);
+                }, 500);
+            }
+            else clearInterval(timer);
+        }
+        else {
+            alert(window.innerHeight+"_2");
+            if (window.innerHeight > windowInnerHeight) {
+                clearInterval(timer);
+                $('#dv').html('android键盘隐藏--通过点击键盘隐藏按钮');
+            }
+        }
+    }
+    $('input').click(eventCheck).blur(eventCheck);
+</script>
+</html>

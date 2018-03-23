@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="static/css/common.css"/>
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+<body class="bg-gray">
+<div class="container">
+    <header class="common-header">
+        <a href="javascript:void(0);" onclick="togoBack()">
+            <i class="iconfont icon-arrow">&#xe621;</i>
+        </a>
+        <span>个人详情</span>
+    </header>
+    <div class="zw-group detail-box">
+        <div class="detail-radios">
+            <label for="gold">
+                <input id="gold" type="radio" name="character" checked="checked" value="金格"/>
+                <span class="radio active">
+                    <img src="static/images/radio1.png"/>
+                    <span>金</span>
+                </span>
+            </label>
+            <label for="wood">
+                <input id="wood" type="radio" name="character" value="木格"/>
+                <span class="radio">
+                    <img src="static/images/radio.png"/>
+                    <span>木</span>
+                </span>
+            </label>
+            <label for="water">
+                <input id="water" type="radio" name="character" value="水格"/>
+                <span class="radio">
+                    <img src="static/images/radio.png"/>
+                    <span>水</span>
+                </span>
+            </label>
+            <label for="fire">
+                <input id="fire" type="radio" name="character" value="火格"/>
+                <span class="radio">
+                    <img src="static/images/radio.png"/>
+                    <span>火</span>
+                </span>
+            </label>
+            <label for="soil">
+                <input id="soil" type="radio" name="character" value="土格"/>
+                <span class="radio">
+                    <img src="static/images/radio.png"/>
+                    <span>土</span>
+                </span>
+            </label>
+        </div>
+        <div class="detail-button">
+            <button class="btn-login" type="button" onclick="toSave()">保存</button>
+            <button class="btn-login btn-default" type="button" onclick="showAll('#model','#modal-box')">驳回</button>
+        </div>
+    </div>
+    <div class="detail-list">
+        <h3 class="title">右手掌</h3>
+        <div class="detail">
+            <img src=""/>
+        </div>
+    </div>
+    <input type="hidden" id="userId"/>
+    <input type="hidden" id="detailId"/>
+    <input type="hidden" id="detailPersonality"/>
+    <!--model start-->
+    <!--驳回-->
+    <div id="mask" class="mask"></div>
+    <div id="model" class="model"></div>
+    <div id="modal-box" style="display:none;">
+        <div class="modalbox">
+            <div id="signUp">
+                <div class="joinIn">
+                    <div class="x_close" onclick="hideAll()">
+                        <img src="static/images/xx1.png">
+                    </div>
+                    <form class="join-form">
+                        <div>
+                            <textarea id="reason" placeholder="请输入驳回原因"></textarea>
+                        </div>
+                    </form>
+                    <div class="join-info-footer">
+                        <a href="javascript:void(0)" class="btn btn-join-info" onclick="toRefuse()">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script>
+    var href = window.location.href
+    if (href.indexOf("=") > -1) {
+        var sid = window.location.href.split("=")[1].split("&")[0];
+        var id = window.location.href.split("=")[2];
+    }
+    $(function () {
+        var labelW = $(".detail-radios label").width();
+        $(".detail-radios label").height(labelW);
+        $(".detail-radios label").css("line-height", labelW + "px");
+        getDetail();
+    })
+    function getDetail() {
+        var dataJson = {
+            format: "json"
+            , sid: sid
+            , id: id
+        }
+        $.ajax({
+            type: "post",
+            url: "http://10.20.31.201:8059/api/ops/zw/userHandApi/handleForm",//10.20.31.201:8066
+            data: dataJson,
+            success: function (data) {
+                if (data.code == 0) {
+                    var datas = data.data;
+                    for (var i = 0; i < datas.length; i++) {
+
+                    $("#detailId").val(datas[i].id);
+                    $("#detailPersonality").val(datas[i].personalityId);
+                        var xData = datas[i].handImgRestVoList;
+                        $("#userId").val(datas[i].userId);
+                        for (var j = 0; j < xData.length; j++) {
+                            if (xData[j].imgType == 0) {
+                                $(".detail-list .title").html("右手掌");
+                                $(".detail-list .detail img").attr("src", xData[j].imgUrl);
+                            }
+                        }
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    }
+    function togoBack() {
+        window.location.href = "list.html?sid=" + sid;
+    }
+    function toSave() {
+        var dataJson = {
+            format: 'json',
+            id: $("#detailId").val(),
+            personalityName: $("[name=\"character\"]:checked").val(),
+            personalityId: $("#detailPersonality").val(),
+            status: 0,
+            sid: sid
+        }
+        $.ajax({
+            type: "post",
+            url: "http://10.20.31.201:8059/api/ops/zw/userHandApi/handle",//10.20.31.201:8066
+            data: dataJson,
+            success: function (data) {
+                if (data.code == 0) {
+                    console.log(data.msg);
+                    window.location.href="list.html"+sid;
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    }
+    function toRefuse() {
+
+        var dataJson = {
+            format: "json"
+            , sid: sid
+            , rejectReason: $("#reason").val() //驳回原因
+            , userId: $("#userId").val() //用户id
+            , imgType: 0 //照片类型  0 右手掌 1 右手背 2 左手掌 3 左手背 4 头像
+        }
+        $.ajax({
+            type: "post",
+            url: "http://10.20.31.201:8059/api/ops/zw/userHandApi/reject",
+            data: dataJson,
+            success: function (data) {
+                if (data.code == 0) {
+                    console.log(data.msg);
+                    window.location.href="list.html"+sid;
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    }
+    $(".detail-radios label").click(function () {
+        $(".detail-radios label").find("input").prop("checked", false);
+        $(this).find("input").prop("checked", true);
+        $(".detail-radios label").find("img").attr("src", "static/images/radio.png");
+        $(this).find("img").attr("src", "static/images/radio1.png");
+
+        $(".detail-radios label").find(".radio").removeClass("active");
+        $(this).find(".radio").addClass("active");
+    })
+    function showMask() {
+        $("#mask").css("height", $(document).height());
+        $("#mask").css("width", $(document).width());
+        $("#mask").show();
+    }
+    //让指定的DIV始终显示在屏幕正中间
+    var count = 0;
+    function letDivCenter(divName, content) {
+        var top = ($(window).height() - $(content).height()) / 2;
+        var left = ($(window).width() - $("content").width()) / 2;
+
+        $(divName).html($(content).html()).css(
+            {
+                position: 'fixed',
+                'top': top,
+                left: 0
+            }
+        ).show();
+
+    }
+
+    //显示遮盖层 start
+    function showAll(divName, serviceInfo) {
+        showMask();
+        letDivCenter(divName, serviceInfo);
+
+    }
+
+    //隐藏遮盖层 start
+    function hideAll() {
+        $("#mask").hide();
+        $("#model").hide();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工人网-注册</title>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/requireJs.js"></script>
+</head>
+<body>
+<div class="gr-register-header">
+    <div class="container">
+        <div style="width:70%">
+            <div class="row">
+                <div class="col-md-8 col-xs-8 header-left">
+                    <a href="index.html">
+                        <img class="gr-logo" src="static/images/logo.png" draggable="false"/>
+                    </a>
+                </div>
+                <div class="col-md-4 col-xs-4 header-right text-right">
+                    <label>
+                       <span> 已有账号？请</span>&nbsp;&nbsp;<a class="gr-main-color text-right" href="javascript:void (0)">登录</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="formWrapper">
+    <div class="container">
+        <div class="register-wrapper classify-wrapper">
+            <div class="pull-left sm-classify-width text-center ">
+                <h4 class="gr-main-color classify-title">我是服务供应商</h4>
+                <div class="classify-left-middle"></div>
+                <div class="classify-footer">
+                    <button class="btn startRecruit btn-classify-sm" onclick="javascript:location.href='register.html'">入驻工人网</button>
+                </div>
+                <span class="or-classify">OR</span>
+            </div>
+            <div class="pull-right sm-classify-width text-center">
+                <h4 class="gr-main-grayColor8 classify-title">我是招工企业</h4>
+                <div class="classify-right-middle"></div>
+                <div class="classify-footer">
+                    <button class="btn btn-default btn-classify-sm" onclick="javascript:location.href='aregister.html'">开始招工</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="register-footer">
+    <p class="title">
+        <a href="javascript:void(0)">
+            常见问题
+        </a>
+        <a href="javascript:void(0)">
+            招聘服务条款
+        </a>
+        <a href="javascript:void(0)">
+            联系客服：cs@gongren.com
+        </a>
+    </p>
+    <hr/>
+    <p class="bottom">
+        <span>Copyright@2016</span>
+        <span>工人网版权所有</span>
+        <span>沪ICP备15006046号</span>
+    </p>
+</div>
+<script>
+    changeColor = function (obj) {
+        $(obj).prev().css("color", "#888").end();
+    }
+    releaseColor=function(obj){
+        if($(obj).val()){
+            $(obj).prev().css("color", "#fff").end();
+        }
+    }
+</script>
+</body>
+</html>

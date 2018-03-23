@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="home-container">
+<div class="row home-margin-bottom">
+    <div class="col-xs-5 col-md-5 home-thumb">
+        <div class="home-partial">
+            <div class="home-partial-title">
+               <i class="icon icon-data"></i>
+               <span>我的资料</span>
+               <a class="pull-right">
+                   <i class="icon icon-home-edit"></i>
+               </a>
+            </div>
+            <div class="home-partial-content">
+                <div class="col-md-12 col-xs-12 gr-clear-padding">
+                    <div class="col-md-4 col-xs-4 home-partial-left">
+                        <div id="changeImg" class="home-partial-img">
+                            <img id="imgShow" src="static/images/imgSrc.png" />
+
+                            <div class="home-footer">
+                                点击修改头像
+                                <input  id="up_img" type="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xs-8 home-partial-contact">
+                        用户名：zhangmanyu@gongren.com<br/>
+                        姓名：张曼玉<br/>
+                        电话：13120881185<br/>
+                        <i class="icon icon-manager"></i>&nbsp;系统管理员
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-5 col-md-5 home-thumb">
+        <div class="home-partial">
+            <div class="home-partial-title">
+                <i class="icon icon-home-company"></i>
+                <span>我的公司</span>
+                <a class="pull-right">
+                    <i class="icon icon-home-edit"></i>
+                </a>
+            </div>
+            <div class="home-partial-content">
+                <div class="col-md-12 col-xs-12 gr-clear-padding">
+                    <div class="col-md-12 col-xs-12 home-partial-contact">
+                        上海斯奈德电器有限公司
+                        <i class="icon icon-home-identification"></i>
+                        <i class="icon icon-home-reward"></i>
+                        <br/>
+                        诚信值：
+                        <i class="icon icon-home-orange"></i>
+                        <i class="icon icon-home-orange"></i>
+                        <i class="icon icon-home-orange"></i><br/>
+                        企业法人：刘先生<br/>
+                        注册资本： 人民币1000万元<br/>
+                        经营地址：上海市宝山区长江南路长江软件园<br/>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-5 col-md-5 home-thumb">
+        <div class="home-partial">
+            <div class="home-partial-title">
+                <i class="icon icon-home-wifi"></i>
+                <span>发布需求</span>
+                <a class="pull-right">
+                    <i class="icon icon-home-edit"></i>
+                </a>
+            </div>
+            <div class="home-partial-content">
+                <div class="col-md-12 col-xs-12 gr-clear-padding">
+                    <div class="col-md-12 col-xs-12 home-partial-contact text-center">
+                        <div class="home-need-content">
+                            <a class="home-recruit-button" href="javascript:void(0)">
+                                开始招聘
+                            </a>
+                            <div>
+                                <a class="gr-main-grayColor8" href="javascript:void(0)">如何在工人网招工?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-5 col-md-5 home-thumb">
+        <div class="home-partial">
+            <div class="home-partial-title">
+                <i class="icon icon-home-book"></i>
+                <span>使用手册</span>
+                <a class="pull-right">
+                    <i class="icon icon-home-edit"></i>
+                </a>
+            </div>
+            <div class="home-partial-content">
+                <div class="col-md-12 col-xs-12 gr-clear-padding">
+                    <div class="col-md-12 col-xs-12 home-partial-contact">
+                        <div>*  如何使用工人网进行招工？</div>
+                        <div>*  如何向指定供应商发布招标订单？</div>
+                        <div>*  新上线的 “智能撮合” 功能如何帮我减少工作量？</div>
+                        <div>*  如何使用 “智能撮合” 功能？</div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    window.onload = function () {
+        new uploadPreview({ UpBtn: "up_img", DivShow: "changeImg", ImgShow: "imgShow" });
+    }
+</script>
+</body>
+</html>

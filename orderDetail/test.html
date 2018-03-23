@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+</div>
+<script>
+    // 一般流程
+    getData();
+
+    function getData() {
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", function (res) {
+            var datas = JSON.parse(res.currentTarget.response);
+            console.log(datas.lists);
+        });
+        oReq.open("GET", "./static/js/data.json");
+        oReq.send();
+    }
+
+</script>
+</body>
+</html>

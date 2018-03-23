@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工人网-注册</title>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/requireJs.js"></script>
+</head>
+<body>
+<div class="gr-register-header">
+    <div class="container">
+        <div style="width:70%">
+            <div class="row">
+                <div class="col-md-8 col-xs-8 header-left">
+                    <a href="index.html">
+                        <img class="gr-logo" src="static/images/logo.png" draggable="false"/>
+                    </a>
+                </div>
+                <div class="col-md-4 col-xs-4 header-right text-right">
+                    <label>
+                        <span> 已有账号？请</span>&nbsp;&nbsp;<a class="gr-main-color text-right" href="javascript:void (0)">登录</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="formWrapper">
+    <div class="container">
+        <div class="register-wrapper">
+            <div class="register-left pull-left">
+                <img src="static/images/zp-register.png" draggable="false"/>
+            </div>
+            <div class="register-right pull-right">
+                <div class="register-box">
+                    <form role="form">
+                        <div class="form-group register-form-group">
+                            <strong>邮箱</strong>
+                            <input type="email" class="form-control register-inputs" id="inputEmail1"
+                                   placeholder="请输入账号" onfocus="changeColor(this)" onblur="releaseColor(this)">
+                        </div>
+                        <div class="form-group register-form-group">
+                            <strong>密码</strong>
+                            <input type="password" class="form-control register-inputs" id="inputPassword1"
+                                   placeholder="请输入密码" onfocus="changeColor(this)" onblur="releaseColor(this)">
+                        </div>
+                        <div class="form-group register-form-group">
+                            <strong>确认</strong>
+                            <input type="password" class="form-control register-inputs" id="inputPassword2"
+                                   placeholder="请再次输入密码" onfocus="changeColor(this)" onblur="releaseColor(this)">
+                        </div>
+                        <div class="checkbox">
+                            <label class="gr-main-grayColor">
+                                <input type="checkbox">我已经阅读并同意
+                            </label>
+                            <a class="gr-main-color pull-right" href="javascript:void(0)">
+                                供应商条款
+                            </a>
+                        </div>
+                        <div class="form-group register-form-group">
+                            <button type="submit" class="btn btn-info register-btn-width">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="register-footer">
+    <p class="title">
+        <a href="javascript:void(0)">
+            常见问题
+        </a>
+        <a href="javascript:void(0)">
+            招聘服务条款
+        </a>
+        <a href="javascript:void(0)">
+            联系客服：cs@gongren.com
+        </a>
+    </p>
+    <hr/>
+    <p class="bottom">
+        <span>Copyright@2016</span>
+        <span>工人网版权所有</span>
+        <span>沪ICP备15006046号</span>
+    </p>
+</div>
+<script type="text/javascript">
+    changeColor = function (obj) {
+        $(obj).prev().css("color", "#888").end();
+    }
+    releaseColor=function(obj){
+        if($(obj).val()){
+            $(obj).prev().css("color", "#fff").end();
+        }
+    }
+</script>
+</body>
+</html>

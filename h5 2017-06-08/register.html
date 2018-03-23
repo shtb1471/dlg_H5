@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>打零工-注册</title>
+    <link href="static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="loginBox">
+        <div class="loginH">
+        </div>
+        <div style="width: 80px;text-align: center;margin: 0px auto 20px;">
+            <img style="width: 100%" src="http://s.chengxinhutong.com/dds/img/gongren/dlg/logo/559561/s839450436430860288.png" />
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="phone"><img src="static/images/phone.png" /> </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input type="number" id="phone" placeholder="请输入手机号"/>
+            </div>
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="verifyCode"><img src="static/images/verify.png" />  </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="请输入密码"/>
+            </div>
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="imgCode"><img style="width: 24px;" src="static/images/imgV.png" />  </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input type="number" id="imgCode" placeholder="请输入图形验证码" style="width: 50%"/>
+                <img id="verifyIMGCode"  style="width:30%;background: transparent;border: 0;float: right;
+                 display: block;height: 42px;padding: 0px 2%;" src="" alt="" onclick="" onclick="getImgVerifyCode()">
+               <input id="imgKey" type="hidden" />
+            </div>
+        </div>
+        <div class="dlg-group dlg-login-border">
+            <label for="verifyCode"><img src="static/images/verify.png" />  </label>
+            <div class="dlg-jiange"></div>
+            <div class="input-group">
+                <input type="number" id="verifyCode" placeholder="请输入验证码" style="width: 50%"/>
+                <button type="button" style="background: transparent;border: 0;float: right;
+                 display: block;height: 42px;padding: 0px 2%;" onclick="getTime(this)">验证码</button>
+            </div>
+        </div>
+        <div class="dlg-group a-login">
+            <a href="javascript:void(0)" onclick="window.location.href='login.html'">已注册？请登录</a>
+        </div>
+        <div class="dlg-group" style="margin-top:84px;" >
+            <button id="submitBtn" class="dlg-btn btn-default" onclick="btnSubmit()">注&nbsp;&nbsp;册</button>
+        </div>
+    </div>
+</div>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script src="static/js/layer_mobile/layer.js"></script>
+<script src="static/js/demo.js"></script>
+<script type="text/javascript">
+    $("#phone").bind('keyup', function () {
+        if ($("#phone").val().length == 11) {
+            $("#submitBtn").removeClass("btn-default").addClass("btn-login-big");
+        }else{
+            $("#submitBtn").removeClass("btn-login-big").addClass("btn-default");
+        }
+    })
+    function btnSubmit() {
+        var phone = $("#phone");
+        var password = $("#password");
+        var verifyCode = $("#verifyCode");
+        if (phone.val() == "" || !verifyArray(phone.val(), RegEx.xx_phone)) {
+            layer.open({
+                content: '!&nbsp;请输入正确的手机号'
+                , skin: 'msg'
+                , time: 2 //2秒后自动关闭
+            });
+            phone.focus();
+            return false;
+        }
+        if (password.val() == "") {
+            layer.open({
+                content: '!&nbsp;请输入密码'
+                , skin: 'msg'
+                , time: 2 //2秒后自动关闭
+            });
+            password.focus();
+            return false;
+        }
+        if (verifyCode.val() == "") {
+            layer.open({
+                content: '!&nbsp;请输入验证码'
+                , skin: 'msg'
+                , time: 2 //2秒后自动关闭
+            });
+            verifyCode.focus();
+            return false;
+        }
+        window.location.href="login.html"
+    }
+    $(function () {
+        getImgVerifyCode();
+    })
+    function getImgVerifyCode() {
+        $.ajax({
+            url: 'http://test2.dalinggong.com/api/userLoginRestApi/createImageCode?format=json',
+            type: 'post',
+            success: function (data) {
+                if (data.code == 0) {
+                    $("#verifyIMGCode").attr("src", data.data[0]);
+                    $("#imgKey").val(data.extra);
+                }
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        })
+    }
+</script>
+</body>
+</html>

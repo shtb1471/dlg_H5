@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon" /> -->
+  <title>心理测试</title>
+  <link rel="stylesheet" href="css/media.css" />
+  <link rel="stylesheet" href="css/test.css" />
+</head>
+<body style="background: #eaeaea;">
+  <div id="wrap">
+  	 <div class="header">
+  	 	<div class="titlehead">
+  	 		<span class="back" onclick="window.location.href='index.html'"><img src="images/back.png" alt=""></span> 
+  	 		<div class="nameinfo">赵腾达<!-- <span class="share"><img src="images/share.png" alt=""></span> --></div>
+  	 	</div>
+  	 </div>
+ 	<div class="section sectionbg">
+ 		<p class="title"><img src="images/zjjs.png" alt="">夫妻相处-服务内容</p>
+ 		<div class="intro">
+ 			<ul class="list_style">
+ 				<li>两性心理洞悉与解密</li>
+ 				<li>配偶性格解析</li>
+ 				<li>男女健康咨询</li>
+ 				<li>夫妻生活和谐技巧</li>
+ 			</ul>
+ 		</div>
+ 	</div>
+	<div class="section sectionbg" id="keadd">
+ 		<p class="title">
+ 			<img src="images/zxzpj.png" alt="">最新评价
+ 		</p>
+    <div class="intro intropj" v-for='(item,index) in lists'>
+      <div class="pj"><img :src="item.head" alt=""> <span v-text='item.name'> </span>
+        <div class="star_bg">                     
+            <input type="radio" id="starScore1" class="score score_1" value="1" name="score">
+        </div>
+        <span class="pjtime" id="dates_1" v-text='item.time'></span>
+      </div>
+      <div class="pjconten" v-text='item.desc'>
+      </div>
+    </div>
+ 		<div class="addAll"><a href="javascript:void(0);" id="seeAll" v-show='lists.length<7' @click=getMore()>查看全部</a></div>
+ 	</div>
+ 	<div class="section sectionbg lastsection">
+ 		<p class="title"><img src="images/qtr.png" alt="">其他人还选择了</p>
+ 		<div class="intro">
+ 			<span class="intro_span">职业选择(<span>496</span>人咨询)</span>
+ 			<span>婚恋分析(<span>602</span>人咨询)</span>
+ 		</div>
+ 	</div>
+  </div>	
+ 	<div class="footer">
+    <div class="intro introfooter">
+      <a href="javascript:void(0);" onclick="shareBtn()"><img src="images/shareicon.png" alt=""><span>扩散</span></a>
+      <!-- <a href="javascript:void(0);">收藏</a> -->
+      <a href="javascript:void(0);" onclick="hireBtn()">雇TA</a>
+    </div>
+  </div>
+ 	<div class="bg_ground"> 
+        <img src="images/share2.png" alt="" class="imgshare">
+    </div>
+ 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+   <script>
+ 	var url = "http://dlg.dalinggong.com/v_2_4";
+ 	$(function () {
+        getWxKey();
+    })
+var vm=new Vue({
+    el:'#keadd',
+    created:function(){
+      for(var i=0;i<this.list.length;i++){
+        this.list[i].time=this.setDate(i);
+      }
+      this.lists=this.list.slice(0,3);
+    },
+    methods:{
+      getMore:function(){
+        this.lists=this.list
+      },
+      setDate:function(index){
+        var dd = new Date(); 
+        dd.setDate(dd.getDate()-index);
+        var y = dd.getFullYear(); 
+        var m = dd.getMonth()+1;
+        var d = dd.getDate(); 
+        return y+"-"+(m<10?('0'+m):m)+"-"+(d<10?('0'+d):d); 
+      }
+    },
+    data:{
+      list:[
+        {
+          head:'images/21.png',
+          name:'林**',
+          star:'',
+          time:'2017-10-10',
+          desc:'这么多年过去了，原来没有真的了解过他。'
+        },
+        {
+          head:'images/22.png',
+          name:'丁**',
+          star:'',
+          time:'2017-10-10',
+          desc:'找现实咨询之余还给我把了个脉，原来他还懂中医啊。'
+        },
+        {
+          head:'images/23.png',
+          name:'徐**',
+          star:'',
+          time:'2017-10-10',
+          desc:'介绍朋友来了，朋友反映说不错！'
+        },
+        {
+          head:'images/24.png',
+          name:'张**',
+          star:'',
+          time:'2017-10-10',
+          desc:'很耐心'
+        },
+        {
+          head:'images/25.png',
+          name:'王**',
+          star:'',
+          time:'2017-10-10',
+          desc:'不管生活怎么样，努力去过好就可以。'
+        },
+        {
+          head:'images/26.png',
+          name:'沈**',
+          star:'',
+          time:'2017-10-10',
+          desc:'都快一年了没要上小孩，经过赵老师提醒原来是“姿势”不对，哈哈。回家再试试呗'
+        }
+      ],
+      lists:[]
+    }
+  })
+
+ function hireBtn(){
+       var ua = window.navigator.userAgent.toLowerCase();
+        var shareUrl=encodeURIComponent(window.location.href);
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=gongren.com.dlg"
+        }else{
+            window.location.href = 'dalinggong://serviceDetail?serviceId=27876016221174778638189237421'
+        }
+    }
+    function shareBtn() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        var shareUrl=encodeURIComponent(window.location.href);
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            // showAll('#model','#modal-box');
+           $(".bg_ground").show();
+            $(".bg_ground").click(function(){
+                $(this).hide();
+            })
+        }else{
+            window.location.href = 'dlg://share'
+                +'?title= "原来我是这样的人！"'
+                + '&msg="最权威的心理测试，助你了解真我，教你与人相处"'
+                + '&img=http://s.chengxinhutong.com/dds/img/gongren/dlg/logo/559561/s839450436430860288.png'
+                + '&url=' +shareUrl
+        }
+    }
+
+
+    function getWxKey() {
+        $.ajax({
+            async: false,
+            url: url + "/api/appHtmlRestApi/queryWchatShare",
+            data: {
+                format: "json",
+                detailsUrl: window.location.href
+            },
+            type: 'post',
+            success: function (data) {
+                if (data.code == 0) {
+                    var wxData = data.data[0];
+                    wx.config({
+                        debug: false,
+                        appId: wxData.appid,
+                        timestamp: wxData.timestamp,
+                        nonceStr: wxData.noncestr,
+                        signature: wxData.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    wx.ready(function () {
+                        var shareData = {
+                            title: "原来我是这样的人！",
+                            desc: "最权威的心理测试，助你了解真我，教你与人相处",
+                            link:"",
+                            imgUrl: wxData.userLogo,
+                            success: function (res) {
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                            }
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                        wx.onMenuShareQQ(shareData);
+                        wx.onMenuShareQZone(shareData);
+                        wx.onMenuShareWeibo(shareData);
+                    });
+                    wx.error(function (res) {
+                        console.log(res);
+                    });
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function (e) {
+                console.log(e.message);
+            }
+        })
+    }
+   </script>
+</body>
+</html>	

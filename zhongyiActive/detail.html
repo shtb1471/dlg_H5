@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医生介绍</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="./static/css/css.css"/>
+</head>
+<body>
+<div id="detail">
+    <div class="detail-header">
+        <div class="detail-h-c">
+            <div class="detail-img">
+                <img :src="list.img" draggable="false" alt="">
+            </div>
+            <!--<span class="detail-job">{{list.job}}</span>-->
+            <div>{{list.name}}<span class="detail-icon">已认证</span></div>
+            <div class="detail-desc">{{list.desc}}</div>
+        </div>
+    </div>
+    <div class="navintru">
+        <ul>
+            <li><span>100</span>专业水平</li>
+            <li><span>100</span>服务态度</li>
+            <li><span>100%</span>验收通过率</li>
+        </ul>
+    </div>
+    <div class="detail-box" @click="showDetailDesc=!showDetailDesc">
+        <div class="title" :class="{'title-border':showDetailDesc}">医生介绍
+            <span class="right-arrow" :class="{'active':showDetailDesc}"></span>
+        </div>
+        <div class="txt" v-if="showDetailDesc">
+         {{list.detail}}
+        </div>
+    </div>
+    <div class="detail-box">
+        <div class="title title-border">服务介绍</div>
+        <div class="txt">
+            {{list.serviceDesc}}
+        </div>
+    </div>
+    <div class="detail-box" style="margin-bottom: 3.2rem;">
+        <div class="title title-border">最新留言</div>
+        <div class="txt1">
+            <ul class="zy-details">
+                <li v-for="detail in details">
+                    <div class="detail-content">
+                        <div class="detail-left" :href="list.url">
+                            <div class="detail-img-1">
+                                <img :src="detail.img" alt="" draggable="false" />
+                            </div>
+                            <div class="detail-txt">
+                                <div>{{detail.name}}
+                                    <span v-for="num in detail.num" class="icon-star"></span>
+                                </div>
+                                <div>{{detail.desc}}</div>
+                            </div>
+                        </div>
+                        <!--<div class="detail-right ">-->
+                            <!--{{detail.time}}-->
+                        <!--</div>-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="detail-footer">
+        <div onclick="shareBtn()">
+            <img src="./static/images/shareicon.png" alt="">
+            <span>扩散</span>
+        </div>
+        <!-- <a href="javascript:void(0);">收藏</a> -->
+        <div onclick="hireBtn()">雇TA</div>
+    </div>
+    <div class="bg_ground" onclick="hideModal(this)">
+        <img src="./static/images/share2.png" alt="" class="imgshare">
+    </div>
+</div>
+<script src="./static/js/jquery-1.8.3.min.js"></script>
+<script src="./static/js/vue.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+<script src="./static/js/common.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#detail',
+        data: {
+            id: 0,
+            list: {},
+            showDetailDesc:false,
+            details:[]
+        },
+        created: function () {
+            var _this = this;
+            _this.list = jsonDatas.detailLists[parseInt(_this.getQueryVariable("id"))];
+            _this.details=jsonDatas.details;
+        },
+        methods: {
+            getQueryVariable: function (variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return "";
+            }
+        }
+    });
+</script>
+</body>
+</html>

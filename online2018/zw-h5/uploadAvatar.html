@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="format-detection" content="telephone=no"/><!--telephone=no，手机号码不被显示为拨号链接  yes/则为拨号连接-->
+    <meta http-equiv="windows-Target" contect="_top"><!--强制页面在当前窗口独立显示，防止别人当作frame页调用-->
+    <title>上传头像</title>
+    <link rel="stylesheet" href="css/font_icon/iconfont.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/common/trafficStatistics.js"></script><!--百度统计-->
+</head>
+<body style="background: #f7f7f7;">
+<div id="pload"><img src="images/loading.gif"/><p>上传中，请稍后...</p></div>
+<!--拍照提示-->
+<div class="photograph_main photographBefor">
+    <div id="imgBtn" class="succeed_hint photographBefor_file" imgType="4">
+        <div class="uplodHintBtn uplodadAvatar"></div>
+    </div>
+    <div class="photographTitle">示例图：头部正面照</div>
+    <div class="btn_main testResults_btn">
+        <button class="Btn" style="display:inline-block;padding: 3% 0;" id="photograph_btn">拍照上传</button>
+    </div>
+
+    <!--oss-->
+    <div id="ossfile" style="display: none">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+    <div id="container">
+        <a id="selectfiles" href="javascript:void(0);" class='btn' style="display: none">选择文件</a>
+        <a id="postfiles" href="javascript:void(0);" class='btn' style="display: none">开始上传</a>
+    </div>
+
+</div>
+
+<script src="js/common/jquery.min.js"></script>
+<script type="text/javascript" src="lib/crypto1/crypto/crypto.js"></script>
+<script type="text/javascript" src="lib/crypto1/hmac/hmac.js"></script>
+<script type="text/javascript" src="lib/crypto1/sha1/sha1.js"></script>
+<script type="text/javascript" src="lib/base64.js"></script>
+<script type="text/javascript" src="lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="lib/upload.js"></script>
+</body>
+</html>

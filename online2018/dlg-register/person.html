@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>个人用户注册</title>
+  <link rel="stylesheet" href="css/media.css" />
+  <link rel="stylesheet" href="css/test.css" />
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+	<div id="wrap">
+		<!-- <div class="header">
+			        <div class="titlehead">
+			         <span class="back" onclick="window.location.href='index.html'"><img src="images/back.png" alt=""></span> 
+			       	 <div class="nameinfo">绑定手机</div>  
+		       		</div>
+		    </div> -->
+		<div class="tab">
+			<ul>
+				<li >
+					<a href="javascript:void(0);" onclick="companyRegister()">企业注册</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);"  class="active" onclick="personRegister()">个人注册</a>
+				</li>
+			</ul>
+		</div>
+     	<div class="banner">
+     		<img src="images/gebanner.png" alt="">
+     	</div>
+		<div class="inner" id="personregister">
+			<div class="err2">——&nbsp; 来自<span id="person"></span>的邀请 &nbsp;——</div>
+	        <div class="err1">   
+	        </div>
+	        <div class="phone_number">
+	         	<div class="input_group">
+	         		<label for="tel">绑定手机号</label>
+	         		<input id="phonetest"  type="tel" name="tel" placeholder=" 输入手机号" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" />
+	         	</div>
+	          	<div class="input_group">
+	         		<label for="imgma">校验码</label>
+	         		<input id="imgvalidmaValue"  type="text" name="imgma" placeholder=" 输入校验码" maxlength="4"  />
+	         		<img class="mainColor btnimg" src="" id="imgvalidmaimg" alt="">
+	          		<a href="javascript:void(0);" id="imgvalidma" >换一换</a>
+	          	</div>
+	       		<div class="input_group">
+	         		<label for="phonema">手机验证码</label>
+	         		<input id="validmaValue"  type="tel" name="phonema" placeholder=" 输入验证码" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')" />
+	         		<input type="button" id="validma" class="btn outlinea" value="发送验证码"/>
+	       		</div>
+	        </div>
+	        <div class="input_group_tip">
+		       		<div class="err">
+		        	</div>
+	        	</div>
+	    </div>
+        <div class="findoddjob">
+          <button class="btnsubmit">提交注册</button>
+        </div>   
+	</div>
+<script src="js/person.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/layer.js"></script>
+</body>
+</html>

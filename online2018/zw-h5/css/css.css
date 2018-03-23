@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.testResultsC .xxdetail{
+    padding:0px;
+    height: 126px;
+}
+#resultTxt{
+    margin-top:126px;
+}
+#resultTxt section{
+    margin:0px 0px 0px 6em;
+}
+#resultTxt section .text{
+    padding: 0 1rem;
+}

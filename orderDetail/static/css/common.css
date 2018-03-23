@@ -1,0 +1,136 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust:none;/*//阻止旋转屏幕时自动调整字体大小*/
+    outline: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* IE <8 */
+}
+body {
+    max-width: 750px;
+    margin: 0px auto;
+    font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    color: #202020;
+    font-size: 1em;
+    font-variant: normal;
+    -webkit-font-smoothing: antialiased;
+}
+h3, ul, li {
+    padding: 0px;
+    margin: 0px;
+}
+table {
+    width: 100%;
+}
+img {
+    border: none;
+}
+a {
+    color: #202020;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    border: none;
+}
+a:focus, input:focus, button:focus {
+    color: #202020;
+    outline: 0;
+    border: none;
+}
+input, textarea, button,select {
+    font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.bg-gray {
+    background: #f7f7f7;
+}
+
+.gray-color-dark {
+    color: #626262;
+}
+
+.gray-color {
+    color: #7e7e7e;
+}
+
+.gray-td-color {
+    color: #888888;
+}
+
+.disabled-color {
+    color: #c6c5c5;
+}
+
+.green-color {
+    color: #00bf74;
+}
+
+.orange-color {
+    color: #ffb452;
+}
+
+.waring-color {
+    color: #ff7a52;
+}
+
+.icon-2x {
+    font-size: 2em;
+}
+
+.inner-width {
+    max-width: 720px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.common-center {
+    padding-bottom: 60px;
+}
+
+/*common*/
+.common-header {
+    background: #333;
+    color: #ffffff;
+    height: 46px;
+    line-height: 46px;
+    padding: 0px 12px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.icon-arrow {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    background: url(../images/back.png) center;
+    background-size: 100%;
+    position: absolute;
+    left: 2%;
+    top: 12px;
+}
+
+.common-header a {
+    color: #333333;
+}
+
+.common-header a.detail {
+    float: right;
+    font-size: 0.8em;
+}
+

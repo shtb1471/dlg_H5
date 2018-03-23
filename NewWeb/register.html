@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+<link rel="icon" href="./images/favicon.ico" href="./images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/login.css"/>
+</head>
+<body>
+<div class="login">
+<div class="header" spanconten="注册" topath="register">
+<header >
+  <div class="container">
+    <div class="leftcontent">
+      <img src="images/download.png" alt="打零工logo"> | 客服电话：400-750-8585</div> 
+      <div class="righttcontent"><span >登录</span>&nbsp; |&nbsp; <span >注册</span></div>
+    </div>
+  </header>
+</div> 
+<div class="bg">
+  <div class="container">
+    <div  class="login_box fr">
+        <h2>快速注册</h2>
+        <input  type="tel" placeholder="请输入手机号" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11" class="phone"> 
+          <input  type="password" placeholder="请输入密码" maxlength="16" class="phone">
+          <div  class="login_code clearfix">
+            <input  type="tel" placeholder="请输入图形验证码" maxlength="4" class="phone"> 
+            <img  src="" alt="图形验证码" class="mainColor">
+          </div> 
+          <div  class="login_code infocode clearfix" style="">
+            <input  type="tel" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="4" placeholder="请输入验证码" class="phone"> 
+            <button  type="button" class="mainColor ivu-btn"><!----> <!----> 
+              <span>获取验证码</span>
+            </button>
+          </div> 
+          <button  type="button" class="mainColor-bg">注册</button> 
+          <i>《打零工服务协议》</i>
+          <div  class="mainColor reg">
+            <span >已有账号？<a href="login.html">登录</a></span>
+          </div>
+        </div>
+      </div>
+    <div class="footer">
+      <div class="footer">
+        <div class="container">
+          <p >Copyright©2017  打零工版权所有  沪ICP备15006046号</p>
+        </div>
+      </div>
+    </div>
+  </div> 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function(){
+    $(".tab span:nth-child(1)").click(function(){
+      $(this).addClass("current").siblings().removeClass("current");
+      $("#login_first").show().siblings("#login_second").hide();
+    });
+    $(".tab span:nth-child(2)").click(function(){
+      $(this).addClass("current").siblings().removeClass("current");
+      $("#login_second").show().siblings("#login_first").hide();
+    });
+  })
+</script>
+</body>
+</html>

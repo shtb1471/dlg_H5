@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%">
+<head>
+    <meta charset="UTF-8">
+    <title>工人网-后台</title>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/requireJs.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <link rel="stylesheet" href="static/css/style.css" type="text/css"/>
+</head>
+<body style="height:100%;overflow:hidden">
+
+<!--header-->
+<div class="gr-main-header">
+    <div class="header-lft">
+        <a href="index.html">
+            <img class="gr-main-logo" src="static/images/logo-baise.png"/>
+        </a>
+    </div>
+    <div class="header-rht">
+        <a href="javascript:void(0)">
+            <i class="gr-icnHd gr-icn0"></i>
+            <span>我的主页</span>
+        </a>
+        <a href="javascript:void(0)">
+            <i class="gr-icnHd gr-icn1"></i>
+            <span>寻找供应商</span>
+        </a>
+
+        <div class="pull-right gr-company-photo">
+            <!--<img src="static/images/dhg.png" />-->
+        </div>
+
+        <div class="pull-right">
+            <a class="gr-info-tip">
+                <i class="gr-info-num">
+                </i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--left-->
+<div id="jquery-accordion-menu" class="jquery-accordion-menu red" style="height:100%;background: #444">
+
+    <ul id="demo-list">
+        <li class="active">
+            <a href="javascript:void(0)" onclick="jumpPage('mainFrame/home.html')">
+                <!--<i class="fa fa-home"></i>-->
+                <i class="icon icon-home1"></i>
+                我的主页
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="jumpPage('mainFrame/program.html')">
+                <i class="icon icon-home-glass"></i>
+                我的项目
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <i class="icon icon-home-money"></i>
+                资金管理
+            </a>
+            <!--<span class="jquery-accordion-menu-label">12 </span>-->
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <i class="icon icon-home-cog"></i>
+                信用管理
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">
+                <i class="icon icon-home-lock"></i>
+                交易密码
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+    <form class="gr-feedback">
+        <div class="feedbackWrapper">
+            <div class="feedback-title">
+                意见反馈
+            </div>
+            <textarea class="feedback-content" placeholder="期待您的宝贵意见" style="resize: none"></textarea>
+        </div>
+        <button class="feedback-btn">提交</button>
+    </form>
+</div>
+
+<!--right-->
+<div id="rightWrapper" class="gr-ght-wrapper">
+
+</div>
+<!--小助手-->
+
+<div class="assistantBtn position-right" onclick="assistantSquare()">
+    <span class="fa fa-comments"></span>
+    <div>招<br/>工<br/>助<br/>手</div>
+</div>
+<div class="assistantWrapper position-right" style="display: none">
+    <p class="assistantTitle">
+        <img src="http://ear.duomi.com/wp-content/uploads/2016/09/1248.jpg">
+        <span>招工小助手</span>
+        <span>：小艾</span>
+        <i class="fa pull-right" onclick="assistantSquare()">×</i>
+    </p>
+
+    <div class="assistantContent">
+        <div class="contactList">
+            <div>小艾：</div>
+            <div>
+                欢迎来到工人网，请问有什么我可以帮您的吗？
+            </div>
+        </div>
+        <div class="contactList">
+            <div>小艾：</div>
+            <div>
+                欢迎来到工人网，请问有什么我可以帮您的吗？
+            </div>
+        </div>
+    </div>
+    <div class="assistantFooter">
+        <input id="assistInput" class="inputBox" type="text"/>
+        <button class="btn btn-default btn-sm pull-right">发送</button>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<script>
+    $(function () {
+        //顶部导航切换
+        $("#demo-list li").click(function () {
+
+            var className = $(this).find("a>i").attr("class").split(" ")[1];
+            var a_className = $("#demo-list li.active").find("a>i").attr("class").split(" ")[1];
+            var a_className1 = a_className.substr(0, a_className.length - 1);
+
+            $(this).find("a>i").removeClass(className).addClass(className + 1);
+            $("#demo-list li.active").find("a>i").removeClass(a_className).addClass(a_className1);
+            $("#demo-list li.active").removeClass("active")
+            $(this).addClass("active");
+        })
+        // 页面嵌套
+        jumpPage("mainFrame/home.html");
+
+    })
+</script>
+
+
+</body>
+</html>

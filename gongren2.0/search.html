@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>工人网-服务大厅</title>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/plugins/jquery.myPagination.js"></script>
+    <script type="text/javascript" src="static/js/requireJs.js"></script>
+</head>
+<body class="bodyBg">
+
+<div class="gr-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-xs-10 header-left">
+                <a href="index.html">
+                    <img class="gr-logo" src="static/images/logo.png" draggable="false"/>
+                </a>
+                <a href="register.html">
+                    <i class="gr-icnHd gr-icn0"></i>
+                    <span>服务供应商驻入</span>
+                </a>
+                <a href="service.html">
+                    <i class="gr-icnHd gr-icn1"></i>
+                    <span>服务大厅</span>
+                </a>
+            </div>
+            <div class="col-md-2 col-xs-2 pull-right header-right">
+                <a class="gr-main-color" href="javascript:void (0)">登录</a>
+                <span class="pull-right">|</span>
+                <a class="gr-main-color1" href="aregister.html">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gr-container-margin">
+    <div class="searchResultGroup">
+        <div class=" gr-position-relative search-boxes">
+            <input class="search-input search-result-input" type="text" placeholder="请输入关键字"/>
+            <button class="search-btn search-result-btn gr-btn-position" type="button">搜索</button>
+        </div>
+    </div>
+    <div class="container gr-list-bottom">
+        <h5 class="innerNav">
+            <span>当前位置：</span>
+            <a href="#">服务大厅</a>
+            <span>&gt;</span>
+            <a href="#">所有订单</a>
+            <span>&gt;</span>
+            <a href="#">搜索结果</a>
+        </h5>
+
+        <div class="searchResultBox">
+            <div class="search-header">
+                <div class="col-md-8 col-xs-8 gr-clear-padding gr-add-padding-right">
+                    <div class="search-header-left">
+                        <p>
+                            <label>城市</label>
+                            <select class="form-control">
+                                <option>江苏</option>
+                            </select>
+                            <select class="form-control">
+                                <option>苏州</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label>订单类别</label>
+                            <a href="javascript:void(0)"><span>不限</span></a>
+                            <a href="javascript:void(0)" class="active"><span>竞价订单</span></a>
+                            <a href="javascript:void(0)"><span>招标订单</span></a>
+                            <a href="javascript:void(0)"><span>极速撮合</span></a>
+                        </p>
+
+                        <p>
+                            <label>需求种类</label>
+                            <a href="javascript:void(0)" class="active"><span>不限</span></a>
+                            <a href="javascript:void(0)"><span>委托招聘</span></a>
+                            <a href="javascript:void(0)"><span>劳务派遣</span></a>
+                            <a href="javascript:void(0)"><span>人事外包</span></a>
+                        </p>
+
+                        <div class="gr-clear-p">
+                            <label>发布时间</label>
+                            <a href="javascript:void(0)"><span>不限</span></a>
+                            <a href="javascript:void(0)"><span>今日发布</span></a>
+                            <a href="javascript:void(0)" class="active"><span>近3日发布</span></a>
+                            <a href="javascript:void(0)"><span>近1周发布</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4 gr-clear-padding gr-add-padding-left">
+                    <div class="search-header-right">
+                        <h4><i class="icon icon-list"></i>实时需求动态</h4>
+
+                        <div class="pull-left search-right-box">
+                            <strong>356笔</strong>
+
+                            <div>极速撮合</div>
+                        </div>
+                        <div class="pull-left search-right-box search-border">
+                            <strong>356笔</strong>
+
+                            <div>竞价订单</div>
+                        </div>
+                        <div class="pull-left search-right-box">
+                            <strong>356笔</strong>
+
+                            <div>招标订单</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <h5 class="search-tips">
+                为您找到 <span>“钳工”</span> 相关的需求订单显示如下：
+            </h5>
+
+            <div class="search-header">
+                <div class="search-list-head">
+                    <div class="col-md-8 col-xs-8 gr-clear-padding gr-add-padding-right">
+                        <ul class="search-list-tabs">
+                            <li class="active">进行中</li>
+                            <li>圆满完成</li>
+                        </ul>
+                        <a href="javascript:void(0)" class="pull-right gr-main-color search-apply">
+                            申请成为优质供应商，独享更多接单特权
+                        </a>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-8 gr-clear-padding gr-add-padding-right">
+                    <div class="search-list-left">
+                        <div class="choice-if">
+                            <a class="active" href="javascript:void(0)"><span>综合排序</span></a>
+                            <a href="javascript:void(0)"><span>发布时间<b class="fa fa-angle-down"></b></span></a>
+                            <a href="javascript:void(0)"><span>截止时间<b class="fa fa-angle-down"></b></span></a>
+                            <a href="javascript:void(0)"><span>参与人数</span></a>
+                        </div>
+                        <div class="search-list-wrapper">
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">竞价订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">招聘订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">招聘订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">竞价订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">竞价订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">竞价订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group row gr-clear-row">
+                                <div class="col-md-6 col-xs-6 pull-left gr-clear-padding">
+                                    <span class="gr-main-color1">初级钳工50名</span>&nbsp;&nbsp;
+                                    <span class="gr-main-color">300元/人</span>
+                                    <span class="list-tag">招聘订单</span>
+
+                                    <div class="gr-main-grayColor">上海普洛斯工业有限公司</div>
+                                </div>
+                                <div class="col-md-6 col-xs-6 pull-right gr-clear-padding text-right">
+                                    <span class="gr-main-color1">第二轮竞价&nbsp;&nbsp;<span class="gr-main-color">12次</span>报价</span>
+
+                                    <div class="gr-main-grayColor">
+                                        <span>2567</span>&nbsp;次浏览&nbsp;&nbsp;截止日期&nbsp;<span>2016.8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news_content" id="demo1"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4 gr-clear-padding gr-add-padding-left">
+                    <div class="search-list-right">
+                        <h5><i class="icon icon-hot-need"></i>热门需求</h5>
+
+                        <div class="list-right-wrapper">
+                            <div class="list-group1 list-group1-border">
+                                <span class="gr-main-color1">初级钳工50名</span>
+                                <span class="list-tag">委托招聘</span>
+
+                                <div class="gr-main-grayColor">2567 次浏览/12 次报价</div>
+                            </div>
+                            <div class="list-group1 list-group1-border">
+                                <span class="gr-main-color1">初级钳工50名</span>
+                                <span class="list-tag">委托招聘</span>
+
+                                <div class="gr-main-grayColor">2567 次浏览/12 次报价</div>
+                            </div>
+                            <div class="list-group1">
+                                <span class="gr-main-color1">初级钳工50名</span>
+                                <span class="list-tag">委托招聘</span>
+
+                                <div class="gr-main-grayColor">2567 次浏览/12 次报价</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-list-right" style="margin-top: 12px;">
+                        <h5><i class="icon icon-strategy"></i>抢单攻略</h5>
+
+                        <div class="list-right-wrapper">
+                            <div class="list-group1 list-group1-border gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-group1 list-group1-border gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-group1 list-group1-border gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-group1 list-group1-border gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-group1 list-group1-border gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="list-group1 gr-main-color2">
+                                <div class="pull-left">*如何获取更多曝光</div>
+                                <div class="pull-right">2016.8.7</div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--gr-footer-->
+<div class="footer gr-footer">
+    <div class="container">
+        <div class="row footerWrapper gr-clear-row">
+            <div class="col-xs-2 col-md-2 footer-partial">
+                <div class="footer-partial-logo">
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2 footer-partial">
+                <div class="footer-contact">
+                    <a href="javascript:void(0)">
+                        <b>关于我们</b>
+                    </a><br/>
+                    <a href="javascript:void(0)">公司介绍</a><br/>
+                    <a href="javascript:void(0)">加入我们</a><br/>
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2 footer-partial">
+                <div class="footer-contact">
+                    <a href="javascript:void(0)">
+                        <b>服务协议</b>
+                    </a><br/>
+                    <a href="javascript:void(0)">招聘服务条款</a><br/>
+                    <a href="javascript:void(0)">供应商条款</a><br/>
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2 footer-partial">
+                <div class="footer-contact">
+                    <a href="javascript:void(0)">
+                        <b>使用手册</b>
+                    </a><br/>
+                    <a href="javascript:void(0)">平台介绍</a><br/>
+                    <a href="javascript:void(0)">招聘流程</a><br/>
+                    <a href="javascript:void(0)">供应商流程</a><br/>
+                    <a href="javascript:void(0)">常见问题</a>
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2 footer-partial">
+                <div class="footer-contact">
+                    <a href="javascript:void(0)">
+                        <b>联系客服</b>
+                    </a><br/>
+                    <a href="javascript:void(0)"><i class="fa fa-headphones"></i>&nbsp;&nbsp;400-750-8787</a><br/>
+                    <a href="javascript:void(0)"><i class="fa fa-envelope"></i>&nbsp;&nbsp;400-750-8787</a><br/>
+                </div>
+            </div>
+            <div class="col-xs-2 col-md-2">
+                <div class="footer-contact">
+                    <div class="footer-weixin"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center footer-copyright">
+                Copyright©2016　工人网版权所有　 沪ICP备15006046号
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function () {
+        $("#demo1").myPagination({
+            currPage: 1,
+            pageCount: 100,
+            pageSize: 5
+        });
+    })
+    $(".search-list-tabs li").click(function () {
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+    })
+</script>
+</html>

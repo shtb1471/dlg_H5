@@ -1,0 +1,108 @@
+/*css badoo style pagination*/
+.news_content{
+    margin: 20px auto;
+}
+div.badoo {
+    font-size: 13px;
+    color: #999;
+    background-color: #fff;
+    text-align: center
+}
+div.badoo input[type="text"]{
+    color: #888;
+    border: 1px solid #eee;
+    min-width: 32px;
+    padding: 2px 4px;
+    font-size: 12px;
+}
+div.badoo input[type="button"]{
+    color: #fff;
+    background: #00baff;
+    border: 1px solid #00baff;
+    min-width: 20px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+div.badoo input[type="button"]:hover{
+    background: #04afff;
+}
+div.badoo a {
+    border:1px solid #f0f0f0;
+    padding:4px 10px;
+    margin: 0px 4px;
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div.badoo a:hover {
+    border: #00baff 1px solid;
+    color: #00baff;
+}
+
+div.badoo a:active {
+    border: #00baff 1px solid;
+    color: #00baff;
+}
+
+div.badoo span.current {
+    border: #00baff 1px solid;
+    padding:4px 10px;
+    font-weight: bold;
+    color: #fff;
+    background: #00baff
+}
+
+div.badoo span.disabled {
+    display: none
+}
+
+/*css manu style pagination*/
+
+.manu {
+    padding: 3px;
+    margin: 3px;
+    text-align: center
+}
+
+.manu a {
+    border: #eee 1px solid;
+    padding:4px 8px;
+    margin: 2px;
+    color: #036cb4;
+    text-decoration: none
+}
+
+.manu a:hover {
+    border: #999 1px solid;
+    color: #666;
+}
+
+.manu a:active {
+    border: #999 1px solid;
+    color: #666;
+}
+
+.manu .current {
+    border: #036cb4 1px solid;
+    padding:4px 8px;
+    font-weight: bold;
+    margin: 2px;
+    color: #fff;
+    background-color: #036cb4
+}
+
+.manu .disabled {
+    border: #eee 1px solid;
+    padding:4px 8px;
+    margin: 2px;
+    color: #ddd;
+}
+
+.load {
+    background: url(../images/loading.gif) no-repeat left center;
+    padding: 20px;
+    color: #999;
+    font-size: 12px;
+}

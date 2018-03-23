@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./../css/default.css"/>
+    <link rel="stylesheet" href="./../css/common.css"/>
+    <link rel="stylesheet" href="./../css/linggong.css" />
+    <link rel="stylesheet" href="./../css/paging.css"/>
+    <title>订单详情</title>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="./../images/logo.png" alt="">
+        </div>
+        <div class="news">
+            <ul>
+                <li>打零工互联网 <span>消息(<b class="redColor">10</b>)</span></li>
+                <li>退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="contain">
+    <!--<div class="nav_title">
+        <div class="container">
+            <ul>
+                <li><img src=".../images/icon_18.png" alt="">首页</li>
+                <li><b>零工管理</b>/订单详情</li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="nav ">
+            <ul>
+                <li class="nav_index_li"><img src="images/icon_18.png" alt=""><a href="javascript:void(0);" data-target="index">首页</a></li>
+                <li><img src="images/icon_01.png" alt="">零工管理
+                    <ul class="nav_child nav_child_guanli">
+                        <li><a href="javascript:void(0);" data-target="fabulinggong">发布零工</a></li>
+                        <li><a href="javascript:void(0);" data-target="quanbulinggong">全部零工</a></li>
+                        <li><a href="javascript:void(0);" data-target="jinxingzhong">进行中</a></li>
+                        <li><a href="javascript:void(0);" data-target="yiwancheng">已完成</a></li>
+                        <li><a href="javascript:void(0);" data-target="yibohui">已驳回</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_02.png" alt="">雇员管理
+                    <ul class="nav_child nav_child_employee">
+                        <li><a href="javascript:void(0);" data-target="employeeClerk">公司职员</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_02.png" alt="">客户管理
+                    <ul class="nav_child nav_child_customer">
+                        <li><a href="javascript:void(0);" data-target="lowerAgent">下级代理商</a></li>
+                        <li><a href="javascript:void(0);" data-target="customerManageDetail">我的客户</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_01.png" alt="">零工市场
+                    <ul class="nav_child nav_child_guanli">
+                        <li><a href="javascript:void(0);" data-target="linggongshichang-zhuandan">我要转单</a></li>
+                        <li><a href="javascript:void(0);" data-target="linggongshichang-jiedan">我要接单</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_04.png" alt="">账户管理
+                    <ul class="nav_child nav_child_info">
+                        <li><a href="javascript:void(0);" data-target="companyInfo">企业资料</a></li>
+                        <li><a href="javascript:void(0);" data-target="wodeqianbao">我的钱包</a></li>
+                        <li><a href="javascript:void(0);" data-target="myEarnings">我的收益(代)</a></li>
+                        <li><a href="javascript:void(0);" data-target="forInvoice">发票管理</a></li>
+                        <li><a href="javascript:void(0);" data-target="securitySetting">安全设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right_content">
+            <div id="rightPart">
+                <div class="bread_nav"> <b>零工管理</b> / 零工详情 </div>
+                <div class="dlg-content">
+                    <div class="dlg-box dlg-ddxq-head">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <div>订单状态</div>
+                                    <h3>已完成</h3>
+                                </td>
+                                <td class="text-right">
+                                    <a href="javascript:void(0);" target="jinxingzhong_dingdanguanli" id="orderfollow">订单跟踪&nbsp;></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="dlg-row clear-padding-left">
+                        <div class="dlg-ddxq-title">
+                            雇员信息
+                        </div>
+                        <div class="dlg-ddxq-lists">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="gyinput"/>
+                                    </td>
+                                    <td>
+                                        <div class="dlg-ddxq-logo">
+                                            <img src="../images/mifeng.png" draggable="false"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        仁川为伟如果多字
+                                    </td>
+                                    <td>13882872712</td>
+                                    <td>研发部</td>
+                                    <td>产品经理</td>
+                                    <td>可用</td>
+                                    <td>15</td>
+                                    <td>15</td>
+                                    <td>
+                                        <a href="">修改</a>&nbsp;
+                                        <a href="">停用</a>&nbsp;
+                                        <a href="">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="gyinput"/>
+                                    </td>
+                                    <td>
+                                        <div class="dlg-ddxq-logo">
+                                            <img src="../images/mifeng.png" draggable="false"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        仁川为伟如果多字
+                                    </td>
+                                    <td>13882872712</td>
+                                    <td>研发部</td>
+                                    <td>产品经理</td>
+                                    <td>可用</td>
+                                    <td>15</td>
+                                    <td>15</td>
+                                    <td>
+                                        <a href="">修改</a>&nbsp;
+                                        <a href="">停用</a>&nbsp;
+                                        <a href="">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="gyinput"/>
+                                    </td>
+                                    <td>
+                                        <div class="dlg-ddxq-logo">
+                                            <img src="../images/mifeng.png" draggable="false"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        仁川为伟如果多字
+                                    </td>
+                                    <td>13882872712</td>
+                                    <td>研发部</td>
+                                    <td>产品经理</td>
+                                    <td>可用</td>
+                                    <td>15</td>
+                                    <td>15</td>
+                                    <td>
+                                        <a href="">修改</a>&nbsp;
+                                        <a href="">停用</a>&nbsp;
+                                        <a href="">删除</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <div class="dlg-row-5">
+                                <div class="dlg-ddxq-title">
+                                    零工信息
+                                </div>
+                                <div class="dlg-ddxq-info clear-padding-left">
+                                    <ul class="dlg-box">
+                                        <li>10元/天</li>
+                                        <li>干活地址：北京海淀区</li>
+                                        <li>干活时间：2017/10/27-2017/10/29 9:00-18:00</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dlg-row-5">
+                                <div class="dlg-ddxq-title">
+                                    结算信息(元)
+                                </div>
+                                <div class="dlg-ddxq-info clear-padding-right">
+                                    <ul class="dlg-box">
+                                        <li>
+                                            <div class="dlg-row-7">
+                                                报酬&nbsp;312.00*3
+                                            </div>
+                                            <div class="dlg-row-3">
+                                                936.00
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dlg-row-7">
+                                                小费&nbsp;0.00*3
+                                            </div>
+                                            <div class="dlg-row-3">
+                                                0.00
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dlg-row-7">
+                                                合计
+                                            </div>
+                                            <div class="dlg-row-3">
+                                                <span class="dlg-red-color">936.00</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="logo">
+            <img src="./.../images/logo_1.png" alt="">
+        </div>
+        <ul>
+            <li>Copyright&copy;2017 打零工 沪ICP备156006046号-1</li>
+            <li>公司地址：上海市普陀区真北路958号天地科技广场一号楼7楼</li>
+        </ul>
+        <ul>
+            <li>客服邮箱：service@dalinggong.com</li>
+            <li>业务合作邮箱：mkt@dalinggong.com楼</li>
+        </ul>
+        <ul>
+            <li>客服热线：400-750-8585 <span>(周一至周五9：00-18：00)</span></li>
+        </ul>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/paging.min.js"></script>
+</body>
+</html>

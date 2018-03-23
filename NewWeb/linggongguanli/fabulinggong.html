@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../js/datepicker/jquery-ui.css">
+    <link rel="stylesheet" href="../js/webuploader/webuploader.css" />
+    <link rel="stylesheet" href="./../css/default.css"/>
+    <link rel="stylesheet" href="./../css/common.css"/>
+    <link rel="stylesheet" href="./../css/linggong.css"/>
+    <link rel="stylesheet" href="./../css/paging.css"/>
+    <title>发布零工</title>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="./../images/logo.png" alt="">
+        </div>
+        <div class="news">
+            <ul>
+                <li>打零工互联网 <span>消息(<b class="redColor">10</b>)</span></li>
+                <li>退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="contain">
+   <!-- <div class="nav_title">
+        <div class="container">
+            <ul>
+                <li><img src="../images/icon_18.png" alt="">首页</li>
+                <li><b>零工管理</b>/发布零工</li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="nav ">
+            <ul>
+                <li class="nav_index_li"><img src="images/icon_18.png" alt=""><a href="javascript:void(0);" data-target="index">首页</a></li>
+                <li><img src="images/icon_01.png" alt="">零工管理
+                    <ul class="nav_child nav_child_guanli">
+                        <li><a href="javascript:void(0);" data-target="fabulinggong">发布零工</a></li>
+                        <li><a href="javascript:void(0);" data-target="quanbulinggong">全部零工</a></li>
+                        <li><a href="javascript:void(0);" data-target="jinxingzhong">进行中</a></li>
+                        <li><a href="javascript:void(0);" data-target="yiwancheng">已完成</a></li>
+                        <li><a href="javascript:void(0);" data-target="yibohui">已驳回</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_02.png" alt="">雇员管理
+                    <ul class="nav_child nav_child_employee">
+                        <li><a href="javascript:void(0);" data-target="employeeClerk">公司职员</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_02.png" alt="">客户管理
+                    <ul class="nav_child nav_child_customer">
+                        <li><a href="javascript:void(0);" data-target="lowerAgent">下级代理商</a></li>
+                        <li><a href="javascript:void(0);" data-target="customerManageDetail">我的客户</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_01.png" alt="">零工市场
+                    <ul class="nav_child nav_child_guanli">
+                        <li><a href="javascript:void(0);" data-target="linggongshichang-zhuandan">我要转单</a></li>
+                        <li><a href="javascript:void(0);" data-target="linggongshichang-jiedan">我要接单</a></li>
+                    </ul>
+                </li>
+                <li><img src="images/icon_04.png" alt="">账户管理
+                    <ul class="nav_child nav_child_info">
+                        <li><a href="javascript:void(0);" data-target="companyInfo">企业资料</a></li>
+                        <li><a href="javascript:void(0);" data-target="wodeqianbao">我的钱包</a></li>
+                        <li><a href="javascript:void(0);" data-target="myEarnings">我的收益(代)</a></li>
+                        <li><a href="javascript:void(0);" data-target="forInvoice">发票管理</a></li>
+                        <li><a href="javascript:void(0);" data-target="securitySetting">安全设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right_content">
+            <div id="rightPart">
+                <div class="bread_nav"> <b>零工管理</b> / 发布零工 </div>
+                <div class="dlg-content">
+                    <form action="">
+                        <div class="dlg-fabu-form">
+                            <h3 class="dlg-title">
+                                基本信息
+                            </h3>
+                            <div class="dlg-form-group">
+                                <div>
+                                    <label>零工名称</label>
+                                    <input type="text" placeholder="请输入零工名称"/>
+                                </div>
+                                <div>
+                                    <label>零工类型</label>
+                                    <select>
+                                        <option value="">请选择零工类型</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>人数</label>
+                                    <input type="number" placeholder="请输入雇佣人数"/>
+                                </div>
+                                <div>
+                                    <label>性别</label>
+                                    <span class="dlg-sex-label">
+                        <label for="unlimited">
+                            <input id="unlimited" type="radio" value="1" name="sex"/>&nbsp;不限
+                        </label>
+                        <label for="male">
+                            <input id="male" type="radio" value="2" name="sex"/>&nbsp;男
+                        </label>
+                        <label for="female">
+                            <input id="female" type="radio" value="3" name="sex"/>&nbsp;女
+                        </label>
+                    </span>
+
+                                </div>
+                            </div>
+                            <h3 class="dlg-title">
+                                结算信息
+                            </h3>
+                            <div class="dlg-form-group">
+                                <div id="accountForm">
+                                    <label>计算方式</label>
+                                    <span>计时</span>
+                                    <span>计件</span>
+                                    <span class="active">计时+计件</span>
+                                </div>
+                                <div  id="jishiShow">
+                                    <label>固定报酬</label>
+                                    <input type="text">
+                                    <select>
+                                        <option value="0">元/天</option>
+                                    </select>
+                                </div>
+                                <div id="jijianShow">
+                                    <label>提成</label>
+                                    <input type="text">
+                                    <select>
+                                        <option value="0">元/件</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h3 class="dlg-title">
+                                干活时间地点
+                            </h3>
+                            <div class="dlg-form-group">
+                                <div>
+                                    <label>干活日期</label>
+                                    <input id="startDate" class="datePicker" type="text" placeholder="开始日期"/>
+                                    <span>-</span>
+                                    <input id="endDate" class="datePicker" type="text" placeholder="结束日期"/>
+                                </div>
+                                <div id="workTime">
+                                    <label>干活时间</label>
+                                    <div id="dlg-time-range">
+                        <span class="dlg-time-box">
+                            <i class="dlg-time-close" onclick="closeTime(this)"></i>
+                            <input type="text" readonly value="9:00-18:00"/>
+                        </span>
+                                    </div>
+                                    <button type="button" class="btn btn-default" onclick="addTimeModal()">添加时间段</button>
+                                </div>
+                                <div>
+                                    <label>工作地点</label>
+                                    <span class="dlg-fb-address">
+                        <div class="dlg-row clear-padding">
+                            <div class="dlg-row-5" onclick="changeActive(this)">
+                                <div class="active">
+                                    <span class="dlg-address-choice"></span>
+                                     北京市海淀区彩和坊路8号天创科技大厦512
+                                </div>
+                            </div>
+                             <div class="dlg-row-5" onclick="changeActive(this)">
+                                 <div>
+                                     <span class="dlg-address-choice"></span>
+                                     北京市海淀区彩和坊路8号天创科技大厦512
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="dlg-blue-color" onclick="showAddressModal()">地址管理</div>
+                    </span>
+                                </div>
+                            </div>
+
+                            <h3 class="dlg-title">
+                                要求描述
+                            </h3>
+                            <div class="dlg-form-group">
+                <textarea name="" id="" cols="60" rows="6" maxlength="500"
+                          oninput="document.getElementById('textarea-num').innerHTML=this.value.length;"
+                          onblur=" if(this.value.length<5) alert('至少输入5个字')"
+                          placeholder="用明确清晰的语言描述你的需求，对雇员的要求，让雇员更了解泥的需求，内容中不要包含QQ、微信、电话、邮箱、网址、公众号等联系方式，请至少输入5个字的描述"></textarea>
+                                <div class="textarea-num-box"><span id="textarea-num">0</span>/500</div>
+                            </div>
+                            <h3 class="dlg-title">添加图片&nbsp;&nbsp;
+                                <span class="mini-size dlg-gray-color">零工现场相关照片</span>
+                            </h3>
+                            <div class="dlg-form-group">
+                                <div class="choose-file-btn" id="choose_file">选择图片</div>
+                                <div class="_filelist file-list"></div>
+                                <div class="dlg-gray-color mini-size">高质量图片会让需求更明确，最多3张图片，图片上包含微信、QQ、手机号、二维码、色情内容的服务会导致审核不通过。</div>
+                            </div>
+                            <h3 class="dlg-title">
+                                联系方式
+                            </h3>
+                            <div class=" dlg-form-group">
+                                <div>
+                                    <label for="username">验收人&nbsp;</label>
+                                    <input id="username" name="username" type="text" placeholder="请输入真实姓名">
+                                </div>
+                                <div>
+                                    <label for="phone">联系电话&nbsp;</label>
+                                    <input id="phone" name="phone" type="text" placeholder="请输入电话">
+                                </div>
+                                <div>
+                                    <label for="email">邮箱(选填)&nbsp;</label>
+                                    <input id="email" name="email" type="text" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+                            <div class="dlg-form-group dlg-form-input">
+                                <div for="dlg-server">
+                                    <input id="dlg-server" name="dlg-server" type="checkbox"/>
+                                    <span class="dlg-blue-color">代理商服务</span>
+                                    选中后会有代理商为此服务
+                                </div>
+                                <div for="dlg-baixian">
+                                    <input id="dlg-baixian" name="dlg-baixian" type="checkbox"/>
+                                    <span class="dlg-blue-color">保险服务</span>
+                                    《保险协议》&nbsp;&nbsp;2元/人/天
+                                </div>
+                            </div>
+                            <div class="add-padding-15">
+                                <button class="btn btn-default">确认发布</button>&nbsp;&nbsp;
+                                <button class="btn btn-default">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="time_modal" class="modal_bg_ground">
+                        <div class="modal_tan" style="width:320px;">
+                            <span class="close">x</span>
+                            <div class="dlg-time-modal">
+                                <h3>添加时间段</h3>
+                                <div>
+                                    <input class="time" id="startTime" placeholder="请选择起始时间" readonly>&nbsp;&nbsp;
+                                    <input class="time" id="endTime" placeholder="请选择结束时间" readonly>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-default" onclick="addTimeR()">保存</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="address_modal" class="modal_bg_ground">
+                        <div class="modal_tan" style="width:520px;">
+                            <span class="close">x</span>
+                            <div class="dlg-address-modal">
+                                <h3 class="text-center add-padding-15">地址管理</h3>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td> 北京市海淀区彩和坊路8号天创科技大厦512</td>
+                                            <td>
+                                                <button type="button" class="btn btn-default mini-size">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 北京市海淀区彩和坊路8号天创科技大厦512</td>
+                                            <td>
+                                                <button type="button" class="btn btn-default mini-size">删除</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <div class="modal_title">新添加地址</div>
+                                    <div>
+                                        <select>
+                                            <option value="">选择省</option>
+                                        </select>
+                                        <select>
+                                            <option value="">选择市</option>
+                                        </select>
+                                        <select>
+                                            <option value="">区/县</option>
+                                        </select>
+                                        <input type="text" placeholder="请输入详细地址"/>
+                                        <button class="btn btn-default" onclick="addAddressModal()">添加</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="logo">
+            <img src="./../images/logo_1.png" alt="">
+        </div>
+        <ul>
+            <li>Copyright&copy;2017 打零工 沪ICP备156006046号-1</li>
+            <li>公司地址：上海市普陀区真北路958号天地科技广场一号楼7楼</li>
+        </ul>
+        <ul>
+            <li>客服邮箱：service@dalinggong.com</li>
+            <li>业务合作邮箱：mkt@dalinggong.com楼</li>
+        </ul>
+        <ul>
+            <li>客服热线：400-750-8585 <span>(周一至周五9：00-18：00)</span></li>
+        </ul>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/datepicker/jquery-ui.js"></script>
+<script src="../js/webuploader/webuploader.js"></script>
+<script src="../js/webuploader/UploadPreview.min.js"></script>
+<script src="../js/paging.min.js"></script>
+<script src="../js/public.js"></script>
+<script>
+    $(function () {
+        $(".time").hunterTimePicker();
+        getDatePicker('startDate', 'endDate');
+    })
+
+    $("#accountForm span").click(function () {
+        addActive(this);
+        var index=$(this).index();
+        switch (index){
+            case 1:
+                $("#jijianShow").hide();
+                $("#jishiShow").show();
+                $("#workTime").show();
+                break;
+            case 2:
+                $("#jishiShow").hide();
+                $("#workTime").hide();
+                $("#jijianShow").show();
+                break;
+            default:
+                $("#jishiShow").show();
+                $("#jijianShow").show();
+                $("#workTime").show();
+                break;
+        }
+    })
+
+    //单次单选弹框
+    function addTimeModal() {
+        $("#startTime,#endTime").val("");
+        $("#time_modal").show();
+    }
+
+    function showAddressModal() {
+        $("#address_modal").show();
+    }
+
+    function addAddressModal() {
+        $("#address_modal").hide();
+    };
+    var uploader = new UploadPreview({
+        swf: "./js/webuploader/Uploader.swf",
+        url: "sea.js",
+        previewInfo: {
+            width: -1,
+            height: -1,
+            viewImgHorizontal: true,
+            previewClass: "new-preview",
+            previewElement: "div",
+            showToolBtn: true,
+            onlyDel: true,
+            previewWrap: ".file-list"
+        },
+        maxFileSize: (1024 * 1024),
+        maxFileNum: 3,
+        maxFileTotalSize: 1024 * 1024 * 3,
+        btns: {
+            // uploadBtn: document.getElementById("upload_now"), //开始上传按钮
+            retryBtn: null,
+            chooseBtn: document.getElementById("choose_file"),
+            chooseBtnText: "选择图片"
+        },
+        error: function (errorCode) {
+            console.log(errorCode);
+        },
+        pictureOnly: false,
+        ignore: {
+            extensions: ".txt,doc"
+        },
+        fileQueued: function (file) {
+            uploader.setData(file, {
+                fileId: new Date().getTime()
+            });
+            console.log("data-uid", file.source.ruid);
+        }
+    });
+</script>
+</body>
+</html>

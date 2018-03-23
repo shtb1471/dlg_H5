@@ -1,0 +1,369 @@
+*{
+    padding: 0;
+    margin:0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei";
+    font-size: 0.28rem;
+    height: 100%;
+    background: #f2f2f2;
+        }
+input,textarea,button {
+    border: 0;
+    -webkit-appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+ul:not(.list_style){
+    list-style: none;
+
+}
+a{
+    text-decoration: none;
+
+}
+#wrap{
+  width: 7.5rem;
+    min-width: 3.2rem;
+    height: auto;
+    overflow: hidden;
+    margin:auto auto;
+}
+
+.header{
+    width: 7.5rem;
+    height:1rem;
+    background: #333;
+}
+.header .titlehead span:nth-child(1) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.1rem;
+}
+.header .titlehead span:nth-child(2) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.1rem;
+    float: right;
+}
+.nameinfo{
+    position: absolute;
+    top: 0.24rem;
+    color: #fff;
+    width: 7.5rem;
+    text-align: center;
+    z-index: 1;
+    min-width: 3.2rem;
+}
+.back{
+    height: 1rem;
+    line-height: 1rem;
+    display: inline-block;
+    position: absolute;
+    z-index: 19;
+}
+
+.inner{
+        width: 100%;
+        }
+.inner img{
+    width: 100%;
+}
+.phone_number {
+    width: 100%;
+    clear: both;
+    margin: 0 auto;
+    height: 1.88rem;
+    background: #fff;
+}
+.phone_number input{
+    width: 77%;
+    height: 0.98rem;
+    font-size: 0.24rem;
+    float: left;
+    margin: 0 auto;
+    padding-left: 2%;
+    -webkit-appearance: none;
+    outline: none;
+    border-top: none;
+}
+.phone_number .validma{
+    width: 30%;
+    float: left;
+    padding-left: 1%;
+    clear: both;
+    border-right: none;
+}
+.phone_number .btn{
+      width: 30%;
+    float: left;
+    background: #fff;
+    color: #888;
+    height: 0.74rem;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.18rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-top: 0.1rem;
+}
+
+.phone_number .outlinea{
+    outline: none;
+    -webkit-appearance : none ;  
+}
+.phone_number .btnimg{
+    width: 30%;
+    float: left;
+    height: 0.75rem;
+    border: none;
+    margin-top: 0.14rem;
+    border-radius: 4px;
+}
+
+.btnsubmit{
+    width: 100%;
+    height: 0.82rem;
+    background: #ffaf23;
+    border: none;
+    color: #fff;
+    font-size: 0.28rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 18px;
+    border-radius: 34px; 
+
+}
+.phone_numberfirst{
+     margin-top: 0.22rem;
+}
+.err{
+    font-size: 0.24rem;
+    text-align: left;
+    visibility: visible;
+    width: 95%;
+    margin-left: 1%;
+    color: orange;
+    margin-top: 0.2rem;
+}
+.err span{
+    background: #ffaf23;
+    border-radius: 100%;
+    display: inline-block;
+    width: 0.28rem;
+    height: 0.28rem;
+    text-align: center;
+    line-height: 0.28rem;
+    color: #fff;
+    margin-right: 0.1rem;
+}
+.inner .checkimg{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 4.6rem;
+}
+.p_text1{
+       font-size: 0.32rem;
+    text-align: center;
+    height: 1rem
+}
+.p_text2{
+    color: #ccc;
+    font-size: 0.26rem;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.p_text3{
+    color: #ccc;
+    font-size: 0.26rem;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.titlefrom{
+    width: 100%;
+}
+.titlefrom span{
+    display: inline-block;
+    width: 2rem;
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis; 
+    overflow:hidden;
+    height: 0.42rem;
+    position: relative;
+    top: 0.1rem;
+}
+
+.mask{
+    position:fixed;
+    top: 0px;
+    filter: alpha(opacity=60);
+    background-color: #000;
+    z-index: 1002;
+    left: 0px;
+    opacity:0.8;
+    -moz-opacity:0.8;
+    padding-bottom: 50px;
+}
+.model{
+    position: fixed;
+    z-index: 1003;
+    width:100%;
+    text-align:left;
+    display: none;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #2c2b2b;
+    line-height: 20px;
+    margin:auto;
+}
+.modalbox{
+    width: 100%;
+    margin: auto;
+    padding: 30px 0;
+    border-radius: 3px;
+}
+.modal-share{
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+}
+.modal-share img{
+    width: 100%;
+}
+.findoddjob {
+    width: 88%;
+    margin: 0 auto;
+    height: 1rem;
+}
+/*换一换*/
+#imgvalidma{
+    display: inline-block;
+    color: orange;
+    float: right;
+    margin-right: 0.1rem;
+    margin-top: 0.3rem;
+}
+.input_group {
+    width: 100%;
+    height: 0.98rem;
+    border: none;
+    font-size: 0.24rem;
+    float: left;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    outline: none;
+    border-bottom: 1px solid #eaeaea;
+    clear:both;
+    background: #fff;
+}
+.input_group:last-child{
+    /*border-bottom: none;*/
+}
+label {
+    color: #444;
+    font-size: 0.28rem;
+    width: 20%;
+    float: left;
+    display: inline-block;
+    height: 0.98rem;
+    line-height: 0.98rem;
+    margin-left: 1%;
+}
+input#imgvalidmaValue {
+    width: 56%;
+}
+input#validmaValue {
+    width: 56%;
+}
+.input_group_tip{
+    height: 0.6rem;
+}
+.bindimg{
+    text-align: center;
+}
+.bindimg img{
+    width: 1.36rem;
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
+}
+.bindimg .jie{
+    font-size: 0.28rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+
+}
+.bindimg .form_group p{
+        height: 0.8rem;
+    /*line-height: 0.8rem;*/
+    clear: both;
+}
+.bindimg .form_group{
+        height: 4rem;
+}
+.bindimg p span{
+    font-size: 0.32rem;
+    display: inline-block;
+    padding-bottom: 0.2rem;
+}
+
+.bindimg .form_group p label{
+    width: 24%;
+    float: left;
+    display: inline-block;
+}
+.bindimg .form_group p span{
+    color: #999;
+    display: inline-block;
+    float: left;
+    width: 71%;
+    text-align: left;
+    font-size: 0.28rem;
+    position: relative;
+    top: 0.28rem;
+}
+.label_img{
+        color: #444;
+    font-size: 0.28rem;
+    width: 20%;
+    float: left;
+    display: inline-block;
+    height: 1rem;
+    line-height: 1rem;
+    margin-left: 1%;
+    text-align: right;
+}
+.label_img img{
+    width: 0.3rem;
+}
+.inner .input_group img.by{
+position: absolute;
+    right: 0.4rem;
+    top: 0.3rem;
+    width: 0.42rem;
+}
+.y{
+    display: none;
+}
+.change_login{
+        text-align: right;
+    margin-right: 0.2rem;
+    position: relative;
+    top: 0.2rem;
+    clear: both;
+}
+.change_login a{
+    color: #999;
+}
+.change_register{
+    text-align: center;
+    color: #999;
+    padding-top: 0.28rem;
+}
+.change_register a{
+    color: #999;
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>预约</title>
+    <link type="text/css" rel="stylesheet" href="./static/css/jeDate-test.css">
+    <link type="text/css" rel="stylesheet" href="./skin/jedate.css">
+    <link href="./static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="./static/css/detail.css" rel="stylesheet" type="text/css"/>
+    <link href="./static/css/zepto.mdater.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="./static/css/zepto.mdater.css">
+    <script type="text/javascript"
+            src="https://webapi.amap.com/maps?v=1.4.2&key=1994ba35a603f806df16000f3799b1da"></script>    
+<!--                 <script src="./static/js/zepto.js"></script>
+    <script src="./static/js/zepto.mdater.js"></script> -->
+</head>
+<body class="bg-gray">
+<div class="common-center">
+    <header class="common-header operate-header">
+        <span class="icon-arrow"></span>
+        <span>预约</span>
+    </header>
+    <div class="midContent">
+        <article class="operate-box">
+            <div class="operate-info-e" style="padding: 0px 2%;">
+                <ul class="orderContent yuyue">
+                    <li>
+                        <div class="left">
+                            服务方式
+                        </div>
+                        <div class="right fanshi">
+                            <span class="active" id="1">到我这</span><span id="2">你去那</span><span id="3">在线服务</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            开始日期
+                        </div>
+                        <div class="right">
+                            <input type="text" class="jeinput address_input" id="test02" placeholder="开始日期">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            结束日期
+                        </div>
+                        <div class="right">
+                            <input type="text" class="jeinput address_input" id="test03" placeholder="结束日期">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            服务时间
+                        </div>
+                        <div class="right">
+                            <!-- 19：00-21：00 -->
+                            <input type="text" id="test04" class="address_input time_input" placeholder="开始时间"><input id="test05" type="text" placeholder="结束时间" class="address_input time_input">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            服务区域
+                        </div>
+                        <div class="right">
+                              <input type="text" class="address_input" id="keyword" name="keyword" onfocus='this.value=""'  placeholder="请输入地址"/>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            详细地址
+                        </div>
+                        <div class="right">
+                             <input type="text" class="address_input" id="detail_adress" placeholder="补充详细地址">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+    <footer class="judge-footer">
+        <article class="operate-box">
+            <nav class="btn-operate">
+                <button type="button" class="button-o">提交</button>
+            </nav>
+        </article>
+    </footer>
+</div>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<!-- <script type="text/javascript" src="static/js/jedate-test.js"></script> -->
+<script type="text/javascript" src="static/js/jquery.jedate.js"></script>
+<script src="./static/js/layer.js"></script>
+<script type="text/javascript">
+/*$("#startDate").mdater({
+    minDate:new Date(2017,2,10)
+});
+
+$("#endDate").mdater({
+    maxDate:new Date(2088,2,10)
+});*/
+    // $('#end').mdater({
+    //     minDate : new Date(2016, 2, 10)
+    // });
+
+var url = 'http://api.dalinggong.com';
+var id = localStorage["serviceid"];
+var service_owner_id = localStorage["service_owner_id"];
+var userid = localStorage["userid"];
+
+$(function () {
+    //常规选择
+    $("#test02").jeDate({
+        format: "YYYY-MM-DD"
+    });
+    $("#test03").jeDate({
+        format: "YYYY-MM-DD"
+    });
+    $("#test04").jeDate({
+        format: "hh:mm:ss"
+    });
+    $("#test05").jeDate({
+        format: "hh:mm:ss"
+    });
+});
+    var windowsArr = [];
+    var marker = [];
+    var map = new AMap.Map("mapContainer", {
+            resizeEnable: true,
+            center: [116.397428, 39.90923],//地图中心点
+            zoom: 13,//地图显示的缩放级别
+            keyboardEnable: false
+    });
+    AMap.plugin(['AMap.Autocomplete','AMap.PlaceSearch'],function(){
+      var autoOptions = {
+        city: "北京", //城市，默认全国
+        input: "keyword"//使用联想输入的input的id
+      };
+      autocomplete= new AMap.Autocomplete(autoOptions);
+      var placeSearch = new AMap.PlaceSearch({
+            city:'北京',
+            map:map
+      })
+      AMap.event.addListener(autocomplete, "select", function(e){
+         //TODO 针对选中的poi实现自己的功能
+         placeSearch.setCity(e.poi.adcode);
+         placeSearch.search(e.poi.name)
+      });
+    });
+    var service_mode ='1';
+    $(function(){
+        $(".fanshi span").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            service_mode = $(this).attr("id");
+        })
+        
+    })
+    //提交预约
+        $(".button-o").click(function(){
+        	var start_date = $("#test02").val();
+        	var end_date = $("#test03").val();
+        	var start_time = $("#test04").val();
+        	var end_time = $("#test05").val();
+        	var adress1 = $("#keyword").val();
+        	var adress2 = $("#detail_adress").val();
+        	var service_address = adress1+adress2;
+        	var poor_date = parseInt(start_date.replace(/-/g, ''))-parseInt(end_date.replace(/-/g, ''));
+        	var poor_time = parseInt(start_time.replace(/:/g, ''))-parseInt(end_time.replace(/:/g, ''));
+        	var beginDate = parseInt(start_date.replace(/-/g, '')+start_time.replace(/:/g, ''));
+
+        	var mm = new Date().getMonth();
+        	var month = (mm+1) < 10 ? "0"+(mm+1).toString() : mm+1;
+        	var dd = new Date().getDate();
+        	var day = dd < 10 ? "0"+dd.toString() : dd;
+        	var hh = new Date().getHours();
+        	var hour = hh < 10 ? "0"+hh.toString() : hh;
+        	var mi = new Date().getMinutes();
+        	var minutes = mi < 10 ? "0"+mi.toString() : mi;
+        	var ss = new Date().getSeconds();
+        	var seconds = ss < 10 ? "0"+ss.toString() : ss;
+        	var newDate = parseInt((new Date().getFullYear() + '-' + month + '-' + day + '-' + hour + '-' + minutes + '-' + seconds).replace(/-/g, ''));
+        	window.localStorage.setItem('service_address', service_address);
+        	window.localStorage.setItem('date', start_date+"---"+end_date);
+        	window.localStorage.setItem('time', start_time+"-"+end_time);
+        	switch (service_mode)
+        	{
+        	case '1':
+        		window.localStorage.setItem('service_mode', '到我这');
+        	  break;
+        	case '2':
+        		window.localStorage.setItem('service_mode', '你去那');
+        	  break;
+        	case '3':
+        		window.localStorage.setItem('service_mode', '在线服务');
+        	  break;
+        	}
+
+        			var json_service = {
+              			  "service_owner_id": service_owner_id,
+              			  "service_owner_clienttype": "1",
+              			  "userid": userid,
+              			  "clienttype": "1",
+              			  "start_date": start_date,
+              			  "end_date": end_date,
+              			  "job_time": [
+              			    {
+              			      "start_time": start_time,
+              			      "end_time": end_time
+              			    }
+              			  ],
+              			  "service_address": service_address,
+              			  "service_mode": parseInt(service_mode)
+              			};
+        	if(start_time!=null&&start_time!=""&&start_date!=null&&start_date!=""&&end_time!=null&&end_time!=""&&end_date!=null&&end_date!=""&&adress1!=null&&adress1!=""&&adress2!=null&&adress2!=""){
+                       if(poor_date<0){
+                           if(poor_time<0){
+                               if(beginDate>newDate){
+                                    $.ajax({
+                                    url: url+'/job/service/reservationService/'+id,
+                                    type: 'post',
+                                    data: JSON.stringify(json_service),
+                                    dataType: 'json',
+                                    contentType: "application/json;charset=utf-8",
+                                    timeout: '1000',
+                                    cache: 'false',
+                                    error: function () {
+                                        alert('预约服务接口报错');
+                                    },
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data.status == 200 && data.body.code == 'SUCCESS') {
+                                            window.location.href='success.html';
+                                        }else{
+                                            alert(data.body.msg);
+                                        }
+                                    }
+                                    })
+                               }else{
+                               layer.open({
+                                     content:'服务开始时间已过期！请重新选择'
+                                     ,skin: 'msg'
+                                     ,style:'position:relative;top:-2rem;font-size:0.22rem;'
+                                     ,time: 2 //2秒后自动关闭
+                                      });
+                               }
+
+
+                           }else{
+                               layer.open({
+                                     content:'请填写正确的服务时间段！'
+                                     ,skin: 'msg'
+                                     ,style:'position:relative;top:-2rem;font-size:0.22rem;'
+                                     ,time: 2 //2秒后自动关闭
+                                      });
+                           }
+
+                        }else{
+                           layer.open({
+                             content:'请填写正确的日期时间段！'
+                             ,skin: 'msg'
+                             ,style:'position:relative;top:-2rem;font-size:0.22rem;'
+                             ,time: 2 //2秒后自动关闭
+                              });
+
+                        }
+
+        	}else{
+        	       layer.open({
+                     content:'请填写完整的预约信息！'
+                     ,skin: 'msg'
+                     ,style:'position:relative;top:-2rem;font-size:0.22rem;'
+                     ,time: 2 //2秒后自动关闭
+                      });
+        	}
+
+        	
+        })
+</script>
+</body>
+</html>

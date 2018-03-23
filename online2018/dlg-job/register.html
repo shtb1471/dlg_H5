@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <title>绑定手机</title>
+    <link rel="stylesheet" href="./static/css/media.css"/>
+    <link rel="stylesheet" href="./static/css/test.css"/>
+</head>
+<body>
+<div id="wrap">
+    <div class="header">
+        <div class="titlehead">
+            <span class="back" onclick="window.location.href='register.html'"></span>
+            <div class="nameinfo">注册</div>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="err1">
+        </div>
+        <div class="phone_number">
+            <div class="input_group">
+                <input id="phonetest" type="tel" name="tel" placeholder="请输入手机号" maxlength="11"
+                       onkeyup="value=value.replace(/[^\d]/g,'')"/>
+            </div>
+            <div class="input_group">
+                <input id="imgvalidmaValue" type="text" name="imgma" placeholder="请输入校验码" maxlength="4"/>
+                <img class="mainColor btnimg" id="imgvalidmaimg" alt=""/>
+                <a href="javascript:void(0);" id="imgvalidma">换一换</a>
+            </div>
+            <div class="input_group">
+                <input id="validmaValue" type="tel" name="phonema" placeholder=" 输入验证码" maxlength="6"
+                       onkeyup="value=value.replace(/[^\d]/g,'')"/>
+                <input type="button" id="validma" class="btn outlinea" value="发送验证码"/>
+            </div>
+            <div class="input_group" style="position: relative;">
+                <input type="password" name="password" id="password" value="" placeholder="设置登录密码（6-16位）" maxlength="16"
+                       minlength="6" readonly onfocus="this.removeAttribute('readonly');" />
+                <img src="./static/images/by.png" alt="" class="by" id="by">
+            </div>
+        </div>
+        <p class="change_login"><a href="login.html">已注册？请登录</a></p>
+        <div class="input_group_tip">
+            <div class="err">
+            </div>
+        </div>
+        <div class="findoddjob">
+            <button class="btnsubmit">完成</button>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="./static/js/codevality.js"></script>
+<script src="./static/js/layer.js"></script>
+<script src="./static/js/md5.js"></script>
+</body>
+</html>

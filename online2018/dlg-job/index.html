@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>零工详情</title>
+    <link href="./static/css/common.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=1994ba35a603f806df16000f3799b1da"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <link href="./static/css/detail.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="bg-gray">
+<div class="common-center">
+    <!--<header class="common-header operate-header">
+        <span class="icon-arrow"></span>
+        <span>零工详情</span>
+    </header>-->
+    <div id='container'></div>
+    <div id="tip"></div>
+    <div class="midContent">
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="pull-left">
+                    <div class="title">
+                        <span id="task_title"></span>
+                        <span class="icon-bao"></span>
+                        <div><span id="post_type_name"></span> | <span id="cost_accounting_type_name"></span> | <span class="recruit_number"></span> | <span id="sex"></span></div>
+                        <div class="waring-color"><span id="price_wage"></span><span id="job_meter_unit_wage_name"></span></div>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div id="headerLogo">
+                        <img src="" id="avatar" class="avatarpath" ondragstart="return false;"/>
+                    </div>
+                    <div></div>
+                    <div>诚信值：<span class="" id="credit"></span></div>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e" style="padding: 0px 2%;">
+                <ul class="orderContent">
+                    <li style='border-bottom:none;'>
+                        <p class="p_title">
+                            干活时间
+                        </p>
+                        <div class='div_separate'>
+                            <ul class='job_time'>
+
+                            </ul>
+                        </div>
+                        <div class="time_point">
+                            <span></span><span class="span_line"></span><span></span>
+                            <ul class="time_line"><li id="start_date"></li><li id="days"></li><li id="end_date"></li></ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            干活地址
+                        </div>
+                        <div class="right">
+                            <div><span class="icon-common icon-addr" ></span><span class="address"id="work_address"></span></div>
+                            <div><span class="icon-common icon-distance"></span>距离 <span id="distance"></span>km</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">共需要</div>
+                        <div class="right">
+                            <div id="recruit_number"></div>
+                            <!--<div>还差<span id="surplus_recruit_number"></span></div>-->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">已接单</div>
+                        <div class="right">
+                            <div id="recruited_number"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="operate-desc">
+                    <div class="title">对TA的要求</div>
+                    <div class="z_content" id="job_requirement"></div>
+                    <p id="zhankai" class="zhan"><img src="static/images/down.png" alt=""/><span>展开</span></p>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="operate-desc">
+                    <div class="title">详情描述</div>
+                    <div id="task_description"></div>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <ul class="pic_show">
+                </ul>
+            </div>
+        </article>
+        <article  class="operate-box">
+            <div class="operate-info-e">
+                <div class="operate-desc">
+                    <div class="title" id="creater_type"></div>
+                    <div class="qiye_news">
+                        <img src="" alt="" class="avatarpath">
+                        <div><span id="name"></span><span>诚信值 <i class="credit"></i></span></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <p class="tip">
+            警示：所有零工不会收取任何费用，若被要求缴纳押金等费用，请提高警惕！
+        </p>
+    </div>
+    <footer class="judge-footer">
+        <article class="operate-box">
+            <nav class="btn-operate">
+                <button type="button" class="button-o" id="reciveOrder">立即接单</button>
+            </nav>
+        </article>
+    </footer>
+</div>
+<div class="bg_ground" v-show="detailsShow">
+    <div class="tan">
+        <span class="close" @click="closeShow">&times;</span>
+        <div class="operate-info-e operate-info-time">
+            <ul class="orderContent">
+                <li>
+                    <p class="p_title">干活时间 </p>
+                    <P><span id='sDate'></span>-<span id='eDate'></span></P>
+                    <div class='div_separate'>
+                        <ul class='job_time checkjob_time' id="">
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="oby">
+                <label for="oby">服从调配</label>
+                <input type="radio" name="sex" id="oby" checked="checked">
+            </div>
+            <div><button type="button" class="getorder"  onclick="todoSubmit()">立即接单</button></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
+<script src="./static/js/layer.js"></script>
+<script>
+    var url = 'http://api.dalinggong.com';
+//    var id = '1516929830123407000001';//零工id
+    var id="";
+    var jobid='';
+    //var userid = localStorage["userid"];//当前操作用户id
+    var worktimeindex ="";
+    var work_shift = "";
+    var work_time = "";
+    var cost_accounting_type = "";
+    var allowschedule =1;
+
+    function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+     }
+
+    $(function () {
+        id=getQueryString('sharekey');
+        getJobById();
+    })
+
+    function active(){
+        $(".checkjob_time li").css("opacity",".5");
+        $(".checkjob_time li").click(function(){
+        $(this).css("opacity","1").siblings().css("opacity",".5");
+        work_shift = $(this).find("#work_shift").html();
+        work_time = $(this).find("#work_time").html();
+        console.log(work_time);
+        window.localStorage.setItem('work_time', work_shift+work_time);
+        if(work_shift=="白班"){
+        worktimeindex ="0";
+        }else if(work_shift=="晚班"){
+        worktimeindex ="2";
+        }else{
+        worktimeindex ="1";
+        }
+        });
+    }
+
+    var x_coordinate;
+    var y_coordinate;
+    function getJobById() {
+        //根据id获取任务
+        $.ajax({
+            // url: url + '/share/jobinfo?sharekey=366d9e64842a32e997d0dba33ba05a7e&source=web',
+            url: url + '/share/jobinfo?sharekey='+id+'&source=web',
+            type: 'get',
+            data: "",
+            dataType: 'json',
+            timeout: '1000',
+            cache: 'false',
+            error: function () {
+                layer.open({
+                         content:'报错'
+                         ,skin: 'msg'
+                         ,style:'position:relative;top:-2rem;'
+                         ,time: 2 //2秒后自动关闭
+                   });
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.status == 200 && data.body.code == 'SUCCESS') {
+                   jobid=data.body.data.job_data.id
+                    var start_date = data.body.data.job_data.start_date.replace(/-/g, '.');
+                    var end_date = data.body.data.job_data.end_date.replace(/-/g, '.');
+                    var dateS = new Date(data.body.data.job_data.start_date.replace(/-/g,"/"));
+                    var dateE = new Date(data.body.data.job_data.end_date.replace(/-/g,"/"));
+                    var poor = dateE.getTime()-dateS.getTime();
+                    var day_poor=Math.floor(poor/(24*3600*1000));
+                    if(day_poor==0){
+                           $("#days").html("1天");
+                       }else{
+                           $("#days").html(day_poor+"天");
+                       }
+                    $("#task_description").html(data.body.data.job_data.task_description);
+                    $("#start_date").html(start_date);
+                    $("#sDate").html(start_date);
+                    $("#eDate").html(end_date);
+                    $("#start_date").html(start_date);
+                    $("#end_date").html(end_date);
+                    $("#job_requirement").html(data.body.data.job_data.job_requirement);
+                    $("#recruit_number").html(data.body.data.job_data.recruit_number+"人");
+                    $(".recruit_number").html(data.body.data.job_data.recruit_number+"人");
+                    $("#recruited_number").html(parseInt(data.body.data.job_data.recruit_number)-parseInt(data.body.data.job_data.surplus_recruit_number)+"人");
+                    $("#surplus_recruit_number").html(data.body.data.job_data.surplus_recruit_number+"人");
+
+                    if(!data.body.data.job_data.work_address){
+                        $("#work_address").parent().parent().parent().css('display','none');
+                    }else{
+                        $("#work_address").html(data.body.data.job_data.work_address);
+                    }
+
+                    var imgs = data.body.data.job_data.job_imgs;
+                    if(imgs.length>0){
+                        var text_img = "";
+                        for (var i=0;i<imgs.length;i++){
+                            text_img += "<li><img src="+imgs[i].url+"></li>"
+                        }
+                        $(".pic_show").html(text_img);
+                    }else if(imgs.length==0){
+                        $('.pic_show').parent().parent().css('display','none');
+                    }
+                    var times = data.body.data.job_data.job_time;
+
+                    var text = "";
+                    if(times.length==0){
+                        $("#div_separate").hide;
+                    }else if(times.length==1){
+                        if(times[0].work_shift=='白班'){
+                            text= "<li style='width:100%;background: #ffca3d' class='time_separate'>"+"<span id='work_shift'>"+times[i].work_shift+"</span>"+"<span id='work_time'>"+times[i].start_time.substr(0,5)+"-"+times[i].end_time.substr(0,5)+"</span></li>";
+                        }else{
+                            text= "<li style='width:100%;background: #98cafd' class='time_separate'>"+"<span id='work_shift'>"+times[i].work_shift+"</span>"+"<span id='work_time'>"+times[i].start_time.substr(0,5)+"-"+times[i].end_time.substr(0,5)+"</span></li>";
+                        }
+                    }else{
+                        for (var i=0;i<times.length;i++){
+                            text += "<li class='time_separate'>"+"<span id='work_shift'>"+times[i].work_shift+"</span>"+"<span id='work_time'>"+times[i].start_time.substr(0,5)+"-"+times[i].end_time.substr(0,5)+"</span></li>";
+                        }
+                        $(".checkjob_time").html(text);
+                        $(".job_time").html(text);
+                    }
+
+                    if(data.body.data.job_data.credit){
+                        $("#credit").html(data.body.data.job_data.credit);
+                    }else{
+                        $("#credit").html(36.5);
+                    }
+
+                    $(".credit").html(data.body.data.job_data.credit);
+                    $("#task_title").html(data.body.data.job_data.task_title);
+                    $("#post_type_name").html(data.body.data.job_data.post_type_name);
+                    $("#cost_accounting_type_name").html(data.body.data.job_data.cost_accounting_type_name);
+                    cost_accounting_type = data.body.data.job_data.cost_accounting_type
+                    $("#job_meter_unit_wage_name").html(data.body.data.job_data.job_meter_unit_wage_name);
+                    $("#name").html(data.body.data.job_data.name);
+
+                    var sex = data.body.data.job_data.sex;
+                    if(sex==1){
+                        $("#sex").html("男");
+                    }else if(sex==2){
+                        $("#sex").html("女");
+                    }else if(sex==3){
+                        $("#sex").html("不限");
+                    }
+
+//                    $("#price_wage").html(data.body.data.job_data.price_wage);
+                    if(data.body.data.job_data.cost_accounting_type==1){
+                        //计时
+                        $("#price_wage").html(data.body.data.job_data.price_wage);
+                        $('#job_meter_unit_wage_name').html(data.body.data.job_data.job_meter_unit_wage_name);
+                    }else if(data.body.data.job_data.cost_accounting_type==2){
+                        //计件
+                        $("#price_wage").html(data.body.data.job_data.price_commission);
+                        $('#job_meter_unit_wage_name').html(data.body.data.job_data.job_meter_unit_commission_name);
+//                        $('.job_time').hide();
+                        window.localStorage.setItem('work_time', start_date+'-'+end_date);
+                    }else if(data.body.data.job_data.cost_accounting_type==3){
+                        //计时+计件
+                        $("#price_wage").html(data.body.data.job_data.price_wage+data.body.data.job_data.job_meter_unit_wage_name);
+                        $('#job_meter_unit_wage_name').html(data.body.data.job_data.price_commission+data.body.data.job_data.job_meter_unit_commission_name);
+                    }
+                    var creater_type = data.body.data.job_data.creater_type;
+                    if(creater_type=="PERSONAL"){
+                        $("#creater_type").html("用工个人");
+                    }else{
+                        $("#creater_type").html("用工企业");
+                    }
+                    $(".avatarpath").attr("src", data.body.data.job_data.avatarpath);
+
+                    var post_type_name=data.body.data.job_data.task_title;
+
+                    window.localStorage.setItem('post_type_name', data.body.data.job_data.task_title);
+                    window.localStorage.setItem('work_address', data.body.data.job_data.work_address);
+                    window.localStorage.setItem('jobid', jobid);
+                    //调/job/jobMapList接口请求参数
+                    window.localStorage.setItem('x_coordinate', data.body.data.job_data.x_coordinate);
+                    window.localStorage.setItem('y_coordinate', data.body.data.job_data.y_coordinate);
+                    window.localStorage.setItem('worktimeindex', worktimeindex);
+                    window.localStorage.setItem('shareuserid', data.body.data.inviter_data.inviter);
+                    window.localStorage.setItem('shareclienttype', data.body.data.inviter_data.clienttype);
+                    window.localStorage.setItem('ouserid', data.body.data.job_data.userid);
+                    window.localStorage.setItem('owerclient', data.body.data.job_data.clienttype);
+
+                }
+
+            }
+        });
+
+        //获取distance
+        // var x_coordinate = localStorage["x_coordinate"];
+        // var y_coordinate = localStorage["y_coordinate"];
+        x_coordinate = localStorage["x_coordinate"];
+        y_coordinate = localStorage["y_coordinate"];
+        console.log("x_coordinate", x_coordinate);
+        console.log("x_coordinate", y_coordinate);
+    }
+
+    $(function () {
+        var imgH=$("#headerLogo img").height();
+        var imgW=$("#headerLogo img").width();
+        if(imgH>imgW){
+            $("#headerLogo img").width($("#headerLogo").width());
+        }
+        if(imgH<imgW){
+            $("#headerLogo img").height($("#headerLogo").height());
+        }else{
+            $("#headerLogo img").width($("#headerLogo").width());
+            $("#headerLogo img").height($("#headerLogo").height());
+        }
+
+        //点击事件没生效***********************************************************job_requirement
+        /*if(!data.body.data.job_data.job_requirement){
+            $('#zhankai').html('无');
+        }*/
+        $('.zhan').on('click',function(){
+            alert('这是第336行');
+            $(".z_content").css("display","block");
+            $(this).children("img").attr("src","static/images/up.png").siblings('span').html("收起");
+            if($('.zhan span').html()=="展开"){
+                $(this).on('click',function(){
+                     $(this).children("img").attr("src","static/images/down.png");
+                     $(this).children("span").html("收起");
+                     $(".z_content").css("display","-webkit-box");
+                });
+            }else if($('.zhan span').html()=="收起"){
+                $(this).on('click',function(){
+                     $(this).children("img").attr("src","static/images/up.png");
+                     $(this).children('span').html('展开');
+                     $(".z_content").css("display","block");
+                });
+            }
+        });
+    });
+
+    function todoSubmit(){
+
+        if($("#oby").attr("checked")){
+             allowschedule =1;
+        }else{
+            allowschedule=0;
+        }
+        if(work_shift!=""){
+        window.localStorage.setItem('allowschedule', allowschedule);
+        window.location.href="register.html";
+        }else{
+          layer.open({
+                     content:'请选择干活时间！'
+                     ,skin: 'msg'
+                     ,style:'position:relative;top:-2rem;'
+                     ,time: 2 //2秒后自动关闭
+                   });
+        }
+    }
+
+    $(function(){
+        $(".bg_ground").hide();
+        $("#reciveOrder").click(function(){
+             if(cost_accounting_type=="1"||cost_accounting_type=="3"){
+                      $(".bg_ground").show();
+                      active();
+                      $(".close").click(function(){
+                      $(".bg_ground").hide();
+              });
+
+             }else if(cost_accounting_type=="2"){
+                   window.localStorage.setItem('allowschedule', allowschedule);
+                   window.location.href="register.html";
+             }
+
+        })
+
+    })
+
+
+
+    var map, geolocation;
+    //加载地图，调用浏览器定位服务
+    map = new AMap.Map('', {
+        resizeEnable: true
+    });
+    map.plugin('AMap.Geolocation', function() {
+        geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            buttonPosition:'RB'
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+    });
+    //解析定位结果
+    function onComplete(data) {
+        var str=['定位成功'];
+        str.push('经度：' + data.position.getLng());
+        str.push('纬度：' + data.position.getLat());
+        lng2 =data.position.getLng();
+        lat2 =data.position.getLat();
+        var lng2 =data.position.getLng();
+        var lat2 =data.position.getLat();
+        console.log("当前位置获取成功", str);
+        var locationss = GetDistance(lat2, lng2, y_coordinate, x_coordinate);
+        console.log("locationss", locationss);
+        $("#distance").html(locationss);
+    }
+    //解析定位错误信息
+    function onError(data) {
+        console.log("当前位置获取失败");
+        var locationss = GetDistance(y_coordinate, x_coordinate, y_coordinate, x_coordinate);
+        console.log("locationss", locationss);
+        $("#distance").html(locationss);
+    }
+
+
+    function Rad(d){
+       return d * Math.PI / 180.0;//经纬度转换成三角函数中度分表形式。
+    }
+    //计算距离，参数分别为第一点的纬度，经度；第二点的纬度，经度
+    function GetDistance(lat1,lng1,lat2,lng2){
+        var radLat1 = Rad(lat1);
+        var radLat2 = Rad(lat2);
+        var a = radLat1 - radLat2;
+        var  b = Rad(lng1) - Rad(lng2);
+        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
+        Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+        s = s *6378.137 ;// EARTH_RADIUS;
+        s = Math.round(s * 10000) / 10000; //输出为公里
+        s=s.toFixed(2);
+        return s;
+    }
+
+</script>
+</body>
+</html>

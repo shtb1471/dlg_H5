@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>零工详情</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+    <link href="static/css/common.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="static/js/RegEx.js"></script>
+    <link href="static/css/wallet.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        .amap-marker .marker-route {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            padding-top: 18px;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            background: url(http://webapi.amap.com/theme/v1.3/images/newpc/poi-1.png) no-repeat;
+            background: url(static/images/moren.png) top center no-repeat;
+            cursor: pointer;
+        }
+        .container{
+            height: 200px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray">
+<div class="common-center">
+    <div id="mainMap" class="container" tabindex="0"></div>
+    <div class="midContent">
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="pull-left">
+                    <div class="title">
+                        服务员
+                        <span class="gray-color">家政维修</span>
+                        <div class="waring-color">100元/天</div>
+                    </div>
+                    <div class="center">
+                        <div>人数&nbsp;&nbsp;10</div>
+                        <div>日期&nbsp;&nbsp;2017.03.10 - 2017.03.12</div>
+                        <div>时间&nbsp;&nbsp;9:00 - 18:00</div>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div id="detailLogo">
+                        <img src="static/images/default_head.png" ondragstart="return false;"/>
+                    </div>
+                    <div class="orange-color">任传伟</div>
+                    <div class="gray-color" style="font-size: 0.6em">诚信档案<span class="orange-color">36.0</span></div>
+                </div>
+                <div class="pull-left gray-color" style="width: 100%;text-align: justify;font-size: 0.8em">
+                    详情描述<br/>
+                    贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆贞瑜伽体验馆
+                </div>
+            </div>
+        </article>
+    </div>
+    <footer class="judge-footer">
+        <article class="operate-box">
+            <nav class="btn-operate">
+                <ul class="x-lists">
+                    <li>
+                        <a href="javascript:void(0)">扩散</a>
+                    </li>
+                    <li>
+                        <button type="button" class="button-o">抢单</button>
+                    </li>
+                </ul>
+            </nav>
+        </article>
+
+    </footer>
+</div>
+<!-- 登录弹框 -->
+<div id="login_box" style="display: none;">
+    <div id="login_mask">
+        <div class="login">
+            <section class="first">
+                <div class="code_num_login hidden">
+                    <span>验证码登录</span>
+                </div>
+                <h2 class="title">登录</h2>
+                <div class="phone_number">
+                    <input id="phone_number" type="tel" placeholder="请输入手机号码" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                </div>
+                <div class="password hidden">
+                    <input type="password" placeholder="请输入密码" />
+                    <i class="x-iconfont">&#xe6b5;</i>
+                    <span class="x-iconfont" hidden>&#xe657;</span>
+                </div>
+                <span class="forget_password hidden">忘记密码</span>
+                <div class="err">
+                    <p class="prompt hidden">你输入的密码有误</p>
+                </div>
+                <p class="security_reminder hidden">为了保障你账号安全，请设置登录密码</p>
+                <span class="next orange">下一步</span>
+                <span class="entry hidden">确定</span>
+                <button class="entry hidden" onclick="window.location.href='success.html'">登录</button>
+            </section>
+            <section class="second hidden">
+                <div class="comback">
+                    <span class="x-iconfont">&#xe601;</span>
+                </div>
+                <h2 class="title">输入验证码</h2>
+                <div class="code_send">
+                    验证码发送&ensp;<span>1772831221</span>
+                </div>
+                <div class="again_send">
+                    <input type="button" class="btn" value="免费获取验证码" onclick="settime(this)" />
+                </div>
+                <div class="code">
+                    <ul class="clearfix">
+                        <li><input type="tel" maxlength="1"></li>
+                        <li><input type="tel" maxlength="1"></li>
+                        <li><input type="tel" maxlength="1"></li>
+                        <li><input type="tel" maxlength="1"></li>
+                    </ul>
+                </div>
+                <div class="agreement">
+                    同意&ensp;<a href="#">用户协议</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="static/js/login.js"></script>
+<script src="http://webapi.amap.com/maps?v=1.3&key=1b3b38f64482aa9843f39fa442223ded"></script>
+<script type="text/javascript">
+    $(".x-lists li").click(function () {
+        console.log("1")
+        $('#login_box').show();
+    })
+    var map = new AMap.Map('mainMap', {
+        resizeEnable: true,
+        zoom: 15,
+        mapStyle: 'normal',
+        center:[121.38398, 31.2322]
+    });
+    //添加点标记，并使用自己的icon
+    var marker = new AMap.Marker({ //添加自定义点标记
+        map: map,
+        position: [121.38398, 31.2322], //基点位置
+        offset: new AMap.Pixel(-17, -42), //相对于基点的偏移位置
+        draggable: false,  //是否可拖动
+        content: '<div class="marker-route marker-marker-bus-from">120元/天</div>'   //自定义点标记覆盖物内容
+    });
+
+    map.plugin(["AMap.CitySearch"], function () {
+        var citysearch = new AMap.CitySearch();
+        citysearch.getLocalCity();
+        AMap.event.addListener(citysearch, "complete", function (result) {
+            var citybounds;
+            if (result && result.city && result.bounds) {
+                citybounds = result.bounds;
+                map.setBounds(citybounds);
+            }
+        });
+    });
+    $(function () {
+        var imgH=$("#detailLogo img").height();
+        var imgW=$("#detailLogo img").width();
+        if(imgH>imgW){
+            $("#detailLogo img").width($("#detailLogo").width());
+        }
+        if(imgH<imgW){
+            $("#detailLogo img").height($("#detailLogo").height());
+        }else{
+            $("#detailLogo img").width($("#detailLogo").width());
+            $("#detailLogo img").height($("#detailLogo").height());
+        }
+    })
+</script>
+</body>
+</html>

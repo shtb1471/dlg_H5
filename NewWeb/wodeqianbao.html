@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./js/datepicker/jquery-ui.css">
+    <link rel="stylesheet" href="./css/default.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
+    <link rel="stylesheet" href="./css/linggong.css" />
+    <link rel="stylesheet" href="./css/paging.css"/>
+    <title>账户管理-我的钱包</title>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+        </div>
+        <div class="news">
+            <ul>
+                <li>打零工互联网 <span>消息(<b class="redColor">10</b>)</span></li>
+                <li>退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="contain">
+    <div class="nav_title">
+        <div class="container">
+            <ul>
+                <li><img src="./images/icon_18.png" alt="">首页</li>
+                <li><b>账户管理</b>/我的钱包</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="nav">
+            <ul>
+                <li> <img src="./images/icon_01.png" alt="">零工管理
+                    <ul class="nav_child">
+                        <li class="active_li"><span class="active">></span>零工市场</li>
+                        <li>未接单</li>
+                        <li>进行中</li>
+                        <li>已完成</li>
+                    </ul>
+                </li>
+                <li><img src="./images/icon_02.png" alt="">客户管理
+                    <ul>
+                        <li>我的客户</li>
+                    </ul>
+                </li>
+                <li><img src="./images/icon_03.png" alt="">雇员管理
+                    <ul>
+                        <li>公司职员</li>
+                        <li>临时雇员</li>
+                        <li>添加分组</li>
+                    </ul>
+                </li>
+                <li><img src="./images/icon_04.png" alt="">账户管理
+                    <ul>
+                        <li>企业资料</li>
+                        <li>子账号管理</li>
+                        <li>我的钱包</li>
+                        <li>我的收益</li>
+                        <li>安全设置</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right_content">
+            <div id="rightPart">
+                <div class="dlg-content">
+                    <div class="dlg-wallet-head">
+                        <div>
+                            <label>账户总额&nbsp;&nbsp;</label><span>19993元</span>
+                            <button type="button" class="btn btn-default" onclick="showRechargeModal()">充值</button>
+                            <button type="button" class="btn btn-default">提现</button>
+                        </div>
+                        <div>
+                            <label>可提现余额&nbsp;&nbsp;</label><span>0元</span>&nbsp;&nbsp;
+                            <label>不可提现余额&nbsp;&nbsp;</label><span>19993元</span>&nbsp;&nbsp;
+                            <label>保证金&nbsp;&nbsp;</label><span>80000元</span>&nbsp;&nbsp;
+                        </div>
+                        <div>
+                            <label>账户&nbsp;&nbsp;</label>
+                            <select name="" id=""><option value="rcw">子账户：任传伟</option></select>
+                            <label>交易类型&nbsp;&nbsp;</label>
+                            <ul id="changeStyle">
+                                <li class="active">充值</li>
+                                <li>提现</li>
+                                <li>线下充值</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <label>交易时间&nbsp;&nbsp;</label>
+                            <input id="startDate" type="text" placeholder="开始日期" /><span>～</span><input id="endDate" type="text" placeholder="结束日期" />
+                            <ul id="changeTime">
+                                <li class="active">今天</li>
+                                <li>昨天</li>
+                                <li>最近7天</li>
+                                <li>最近30天</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dlg-row dlg-wallet-sum">
+                        <div class="dlg-row-3 dlg-box">
+                            <ul class="dlg-sum-num">
+                                <li>
+                                    <div>收入</div>
+                                    <div><span>1000元</span>&nbsp;&nbsp;2笔</div>
+                                </li>
+                                <li>
+                                    <div>支出</div>
+                                    <div><span>5500元</span>&nbsp;&nbsp;10笔</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dlg-row-7">
+                            <ul class="dlg-change-style">
+                                <li class="active">全部</li>
+                                <li>收入</li>
+                                <li>支出</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <table class="table dlg-table-account">
+                        <tr>
+                            <th>交易时间</th>
+                            <th>流水号|订单号</th>
+                            <th>对方信息</th>
+                            <th>交易类型</th>
+                            <th>交易金额（元）</th>
+                            <th>交易状态</th>
+                            <th>交易备注</th>
+                        </tr>
+                        <tr>
+                            <td><div>2017-10-31 10:21:12</div></td>
+                            <td>
+                                <div>111222333444555</div>
+                                <div>111222333444555</div>
+                            </td>
+                            <td>
+                                <div>13761936614</div>
+                                <div>任传伟</div>
+                            </td>
+                            <td>支付报酬</td>
+                            <td>-100</td>
+                            <td>成功</td>
+                            <td><div>支付100元报酬给任传伟</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>2017-10-31 10:21:12</div></td>
+                            <td>
+                                <div>111222333444555</div>
+                                <div>111222333444555</div>
+                            </td>
+                            <td>
+                                <div>13761936614</div>
+                                <div>任传伟</div>
+                            </td>
+                            <td>支付报酬</td>
+                            <td>-100</td>
+                            <td>成功</td>
+                            <td><div>支付100元报酬给任传伟</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>2017-10-31 10:21:12</div></td>
+                            <td>
+                                <div>111222333444555</div>
+                                <div>111222333444555</div>
+                            </td>
+                            <td>
+                                <div>13761936614</div>
+                                <div>任传伟</div>
+                            </td>
+                            <td>支付报酬</td>
+                            <td>-100</td>
+                            <td>成功</td>
+                            <td><div>支付100元报酬给任传伟</div></td>
+                        </tr>
+                        <tr>
+                            <td><div>2017-10-31 10:21:12</div></td>
+                            <td>
+                                <div>111222333444555</div>
+                                <div>111222333444555</div>
+                            </td>
+                            <td>
+                                <div>13761936614</div>
+                                <div>任传伟</div>
+                            </td>
+                            <td>支付报酬</td>
+                            <td>-100</td>
+                            <td>成功</td>
+                            <td><div>支付100元报酬给任传伟</div></td>
+                        </tr>
+                    </table>
+                    <div class="dlg-page">
+                        <div id="box" class="box"></div>
+                    </div>
+                </div>
+                <div id="recharge_modal" class="modal_bg_ground">
+                    <div class="modal_tan" style="width:520px;">
+                        <span class="close">x</span>
+                        <div class="dlg-recharge-modal">
+                            <div>
+                                <label>
+                                    充值金额
+                                </label>
+                                <input type="number" oninput="document.getElementById('dlg-price').innerHTML=this.value;"/>
+                            </div>
+                            <div>
+                                <ul class="dlg-payment">
+                                    <li class="active">支付宝</li>
+                                    <li>微信</li>
+                                    <li>银行卡</li>
+                                </ul>
+                                <div><label>应付金额：</label><span id="dlg-price">0</span>元</div>
+                                <div class="dlg-payment-content">
+                                    <button type="button" class="btn btn-warning-o">去支付</button>
+                                    <button type="button" class="btn btn-default" onclick="closePaymentModal()">关闭</button>
+                                </div>
+                                <div class="dlg-payment-content">
+                                    <img src="./images/ewm.png" draggable="false" alt="">
+                                </div>
+                                <div class="dlg-payment-content">
+                                    <button type="button" class="btn btn-warning-o">去支付</button>
+                                    <button type="button" class="btn btn-default" onclick="closePaymentModal()">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="logo">
+            <img src="./images/logo_1.png" alt="">
+        </div>
+        <ul>
+            <li>Copyright&copy;2017 打零工 沪ICP备156006046号-1</li>
+            <li>公司地址：上海市普陀区真北路958号天地科技广场一号楼7楼</li>
+        </ul>
+        <ul>
+            <li>客服邮箱：service@dalinggong.com</li>
+            <li>业务合作邮箱：mkt@dalinggong.com楼</li>
+        </ul>
+        <ul>
+            <li>客服热线：400-750-8585 <span>(周一至周五9：00-18：00)</span></li>
+        </ul>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="./js/datepicker/jquery-ui.js"></script>
+<script src="./js/paging.min.js"></script>
+<script src="./js/public.js"></script>
+<script>
+    $(function () {
+        pageNum("box");
+        $(".dlg-payment-content").eq(0).show();
+        getDatePicker('startDate','endDate');
+    })
+    $("#changeStyle li,#changeTime li,.dlg-change-style li").click(function () {
+        addActive(this);
+    })
+    $(".dlg-payment li").click(function () {
+        addActive(this);
+        var index=$(this).index();
+        $(".dlg-payment-content").hide();
+        $(".dlg-payment-content").eq(index).show();
+    })
+    function showRechargeModal() {
+        $("#recharge_modal").show();
+    }
+    function closePaymentModal() {
+        $("#recharge_modal").hide();
+    }
+</script>
+</body>
+</html>

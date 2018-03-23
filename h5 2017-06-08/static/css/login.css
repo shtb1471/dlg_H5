@@ -1,0 +1,26 @@
+#login_mask { width: 100%; background-color: rgba(0, 0, 0, 0.5); position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 210; }
+#login_mask .login { width: 80%; background-color: #fff; margin: 120px auto; border-radius: 2px; }
+#login_mask .login .title { font-size: 16px; font-weight: normal; text-align: center; padding-top: 18px; }
+#login_mask .phone_number,#login_mask .password { width: 80%; padding: 16px 0; font-size: 14px; border-bottom: 1px solid #c6c5c5; box-sizing: border-box; margin: 0 auto; position: relative; }
+#login_mask .password i, #login_mask .password span { font-size: 16px; position: absolute; top: 14px; right: 10px; }
+#login_mask .phone_number input, #login_mask .password input { width: 60%; text-align: center; font-size: 14px; border: 0; display: block; margin: 0 auto; outline: none; }
+#login_mask .login .next, #login_mask .entry { width: 100%; height: 40px; line-height: 40px; text-align: center; font-size: 16px; color: #fff; background-color: #c6c5c5; display: block; margin-top: 28px; }
+#login_mask .number_ok .phone_number { border-color: #ffffff; }
+#login_mask .number_ok .next, #login_mask .entry { background-color: #ffb452; }
+#login_mask .forget_password { width: 50px; font-size: 12px; color: #c6c5c5; display: block; margin: 12px auto 0; }
+#login_mask .code_num_login, #login_mask .comback { padding: 16px 12px 0 12px; overflow: hidden; }
+#login_mask .code_num_login span { font-size: 14px; color: #c6c5c5; float: right; }
+#login_mask .comback span { font-size: 14px; color: #c6c5c5; float: left; }
+#login_mask .prompt { font-size: 12px; text-align: center; color: #ff7a52; }
+#login_mask .err { height: 14px; }
+#login_mask .code_send { font-size: 14px; color: #c6c5c5; text-align: center; margin-top: 14px; }
+#login_mask .again_send { padding: 14px 0; }
+#login_mask .btn { height: 30px; font-size: 14px; color: #888888; background-color: #fff; border: 1px solid #efefef; border-radius: 3px; display: block; margin: 0 auto; padding: 0 8px; }
+#login_mask .code ul { width: 198px; margin: 0 auto; }
+#login_mask .code ul li { float: left; margin-right: 10px }
+#login_mask .code ul li:nth-last-child(1) { margin-right: 0; }
+#login_mask .code ul li input { width: 40px; height: 40px; text-align: center; border: 1px solid #efefef; }
+#login_mask .code ul li input.current { border-color: #ffb452; }
+#login_mask .agreement { height: 50px; line-height: 50px; font-size: 12px; color: #ffb452; text-align: center; }
+#login_mask .agreement a { color: #c6c5c5; }
+#login_mask .security_reminder { text-align: center; font-size: 12px; color: #ccc; margin-top: 12px; }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./../css/default.css"/>
+    <link rel="stylesheet" href="./../css/common.css"/>
+    <link rel="stylesheet" href="./../css/linggong.css"/>
+    <title>确认付款</title>
+</head>
+<body>
+<div id="pay_modal" class="modal_bg_ground">
+    <div class="modal_tan" style="width:520px;">
+        <span class="close">x</span>
+        <div class="dlg-payment-modal">
+            <h3 class="text-center add-padding-15">确认付款</h3>
+            <div class="title">账单明细</div>
+            <div class="dlg-payment-account">
+                <div>
+                    <label>报酬</label>
+                    <span>600.00元</span>
+                </div>
+                <div>
+                    <label>小费</label>
+                    <span>10.00元</span>
+                </div>
+                <div>
+                    <label>扣款</label>
+                    <span>0元</span>
+                </div>
+                <div>
+                    <label>平台服务费</label>
+                    <span>24.00元</span>
+                </div>
+                <div>
+                    <label>总金额</label>
+                    <span>634.00元</span>
+                </div>
+            </div>
+
+            <div class="title">选择付款方式</div>
+            <ul id="PaymentType">
+                <li class="active">余额</li>
+                <li>微信</li>
+                <li>支付宝</li>
+                <li>一网通银行卡支付</li>
+            </ul>
+            <div id="showSum" class="dlg-red-color">可用余额1500.00元</div>
+            <div class="title">请输入支付密码</div>
+            <div>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+                <input type="password" maxlength="1" oninput="paymentJump(this)"/>
+            </div>
+            <div class="text-center add-padding-15">
+                <button type="button" class="btn btn-warning" onclick="cancelPaymentModal()">立即支付</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-default" onclick="cancelPaymentModal()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/public.js"></script>
+<script>
+    $(function () {
+        showPaymentModal();
+    })
+    //单次单选弹框
+    function showPaymentModal() {
+        $("#pay_modal").show();
+    }
+    function cancelPaymentModal() {
+        $("#pay_modal").hide();
+    }
+    function paymentJump(obj) {
+        $(obj).focus().css("border-color","#ddd");
+        if(/\d/.test($(obj).val())){
+            if(parseInt($(obj).val())){
+                $(obj).next().focus();
+            }else{
+                $(obj).prev().focus();
+            }
+        }else{
+            $(obj).val("").focus().css("border-color","red");
+            return false;
+        }
+    }
+    $("#PaymentType li").click(function () {
+        $("#showSum").hide();
+        if($(this).index()==0){
+            $("#showSum").show();
+        }
+        addActive(this);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+*{
+    padding: 0;
+    margin:0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei";
+    font-size: 14px
+        }
+input,textarea,button {
+    border: 0;
+    -webkit-appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+ul:not(.list_style){
+    list-style: none;
+
+}
+a{
+    text-decoration: none;
+
+}
+#wrap{
+  width: 7.5rem;
+    min-width: 3.2rem;
+    height: auto;
+    overflow: hidden;
+    margin:auto auto;
+}
+header{
+    width: 7.5rem;
+    height:4rem;
+    margin: 0 auto;
+    background:url(../images/bg.png) top no-repeat;
+    background-size:100% 100%;
+    position: relative;
+}
+header .titlehead span:nth-child(1) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.1rem;
+}
+header .titlehead span:nth-child(2) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.2rem;
+    float: right;
+}
+.navintru{
+    width: 100%;
+    position: relative;
+    top: -0.5rem;
+    height: 1rem;
+}
+.navintru ul{
+    list-style: none;
+    background: white;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 6px;
+    height: 1.2rem;
+    box-shadow: 1px 2px #eaeaea;
+    padding-top: 0.2rem;
+}
+.navintru ul li{
+    width: 33.3%;
+    float: left;
+    text-align: center;
+    font-size: 0.28rem;
+}
+.navintru ul li span{
+    display: block;
+    font-size: 0.3rem;
+    color: #0092eb;
+    font-weight: 600;
+    margin-top: 0.1rem;   
+}
+.navintru .userLogo img{
+    width: 1.22rem;
+    height: 1.22rem;
+    border-radius: 100%;
+    border:1px solid #eaeaea;
+}
+.userLogo{
+    position: absolute;
+    width: 100%;
+    bottom: 1.5rem;
+    text-align: center;
+}
+.userLogo div{
+    color: #fff;
+    margin-left: 0.24rem;
+    font-size: 0.3rem;
+    margin-top: 0.2rem;
+    clear: both;
+}
+.userLogo div>span{
+    display: block;
+    font-size: 0.26rem;
+    margin-top: 0.1rem;
+    color: #e4e0e0;
+}
+.userLogo div>span>span{
+    background: orange;
+    padding: 0.04rem 0.08rem;
+    border-radius: 4px;
+    margin-left: 0.12rem;
+    font-size: 0.2rem;
+}
+.section{
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 0.2rem;
+}
+.section .title{
+    width: 100%;
+    float: left;
+    font-size: 0.28rem;
+    color: #333;
+    margin-top: 0.12rem;
+    height: 0.46rem;
+    margin-bottom: 0.1rem;
+}
+.section .title img{
+    width: 0.4rem;
+    float: left;
+    margin-top: -0.0461rem;
+    margin-right: 0.12rem;
+    margin-left: 0.12rem;
+}
+.section .intro{
+    text-align: justify;
+    color: #666;
+    width: 91%;
+    clear: both;
+    margin-left: 7%;
+    font-size: 0.28rem;
+    line-height: 0.44rem;
+    padding-bottom: 0.32rem;
+}
+.intro .techang {
+    width: 31%;
+    float: left;
+    margin-left: 3%;
+}
+.intro .techang:nth-child(1){
+    margin-left: 0;
+}
+.intro .techang li{
+    height: 0.68rem;
+    border: 1px solid #eaeaea;
+    padding: 0.2rem 0;
+}
+.intro .techang li:nth-child(2){
+    border: none;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 0.66rem;
+}
+ .intro .techang li:nth-child(2) a{
+    padding: 0.1rem 0.3rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.24rem;
+ }
+.intro .techang li img{
+    float: left;
+    margin-right: 0.01rem;
+    width: 0.46rem;
+    margin-top: 0.1rem;
+    margin-left: 0.06rem;
+}
+.intro .techang li>div{
+    float: right;
+    font-size: 0.26rem;
+    color: #333;
+}
+.intro .techang li>div>span{
+    display: block;
+    font-size: 0.24rem;
+    color: #666;
+    margin-right: 0.06rem;
+}
+.intro .techang li>div>span>span{
+    color: red;
+}
+.graybtn{
+    border: 1px solid #eaeaea;
+    background: #eaeaea;
+    color: #333;
+    display: inline-block;
+    padding: 0.08rem 0.24rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-width: 3.2rem;
+    height: auto;
+    overflow: hidden;
+    margin: auto auto;
+    background: #fff;
+    height: 0.9rem;
+}
+.introfooter{
+    text-align: center;
+    width: 7.5rem;
+    margin:0 auto;
+
+}
+.introfooter a:nth-child(1){
+    display: inline-block;
+    border: 1px solid #eaeaea;
+    padding: 0.061rem 0.22rem 0.04rem 0.22rem;
+    width: 0.6rem;
+    float: left;
+    height: 0.88rem;
+}
+.introfooter a img{
+    vertical-align: middle;
+    width: 0.42rem;
+}
+.introfooter a span{
+    display: block;
+    color: #a0a0a0;
+    font-size: 0.26rem;
+}
+.introfooter a:nth-child(2){
+    display: inline-block;
+    width: 6.396rem;
+    float: right;
+    background: #0092eb;
+    height: 1.056rem;
+    line-height: 1.056rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.3rem;
+}
+
+.lastsection{
+    margin-bottom: 1.3rem;
+}
+/*星星*/
+/* 灰色背景星星5个平铺 */
+.star_bg {
+    width: 2.2rem; height: 20px;
+    background: url(star.png) repeat-x;
+    position: relative;
+    overflow: hidden;
+    background-size: 20%;
+}
+/* 这是5个小星星们的默认状态的定位 */
+.star {
+    height: 100%; width: 0.5rem;
+    line-height: 6em;
+    position: absolute;
+    z-index: 3;
+}
+.star_1 { left: 0; }
+.star_2 { left: 0.5rem; }
+.star_3 { left: 1rem; }
+.star_4 { left: 1.5rem; }
+.star_5 { left: 2rem; }
+
+/* 鼠标hover效果实现，分别显示背景与定宽 */
+.header{
+    width: 7.5rem;
+    height:1rem;
+    background: #333;
+}
+.header .titlehead span:nth-child(1) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.1rem;
+}
+.header .titlehead span:nth-child(2) img{
+    width: 0.4rem;
+    margin: 0.2rem 0.1rem;
+    float: right;
+}
+.nameinfo{
+    position: absolute;
+    top: 0.24rem;
+    color: #fff;
+    width: 7.5rem;
+    text-align: center;
+    z-index: 1;
+    min-width: 3.2rem;
+}
+.back{
+    height: 1rem;
+    line-height: 1rem;
+    display: inline-block;
+    position: absolute;
+    z-index: 19;
+}
+.share{
+    height: 1rem;
+    line-height: 1rem;
+    display: inline-block;
+    float: right;
+    position: absolute;
+    z-index: 19;
+    right: 0;
+    top: -0.21rem;
+}
+.share img{
+    width: 0.4rem;
+    margin: 0.2rem 0.2rem;
+}
+.intro_span{
+    margin-right: 0.2rem;
+}
+.intro_span>span{
+    color: red;
+}
+.intro_span+span>span{
+    color: red;
+}
+
+/* 星星点灯照亮我的家门 */
+.star_bg {
+    width: 2rem;
+    height: 0.54rem;
+    background: url(../images/xx.png) repeat-x;
+    position: relative;
+    overflow: hidden;
+    background-size: 20%;
+    float: left;
+}
+.star {
+    height: 100%; width: 0.5rem;
+    line-height: 6em;
+    position: absolute;
+    z-index: 3;
+}
+.star:hover {    
+    background: url(../images/xx1.png) repeat-x 0 0px!important;
+    left: 0; z-index: 2;
+    background-size: 20%;
+}
+.star_1 { left: 0; }
+.star_2 { left: 0.51rem; }
+.star_3 { left: 1.02rem; }
+.star_4 { left: 1.52rem; }
+.star_5 { left: 2.02rem; }
+.star_1:hover { width: 0.51rem; }
+.star_2:hover { width: 1.02rem; }
+.star_3:hover { width: 1.52rem; }
+.star_4:hover { width: 2.02rem; }
+.star_5:hover { width: 2.52rem; }
+
+label { 
+    display: block; _display:inline;
+    height: 100%; width: 100%;
+    cursor: pointer;
+}
+
+.pj img{
+        width: 0.46rem;
+    float: left;
+    margin-right: 0.12rem;
+}
+.pj span{
+    float: left;
+    margin-right: 0.2rem;
+    color: #333;
+}
+.pj .pjtime{
+    float: right;
+    color: #999;
+}
+.pjconten{
+    clear: both;
+    font-size: 0.26rem;
+}
+.intropj{
+    /*margin-bottom: 0.2rem;*/
+}
+.sectionbg{
+    background: #fff;
+    padding-top: 0.12rem;
+}
+.addAll{
+    text-align: center;
+    height: 0.8rem;
+    line-height: 0.5rem;
+}
+.addAll a{
+    color: #333;
+}
+.bg_ground{
+    background: rgba(0,0,0,.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.3rem;
+    display:none;
+}
+.imgshare{
+    float: right;
+    margin-right: 0.2rem;
+}

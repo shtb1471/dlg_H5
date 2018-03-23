@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>服务详情</title>
+    <link href="./static/css/common.css" rel="stylesheet" type="text/css"/>
+<!--     <link href="./static/css/swiper.min.css" rel="stylesheet" type="text/css"/> -->
+    <link href="./static/css/detail.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body class="bg-gray">
+<div class="common-center">
+    <header class="common-header operate-header">
+        <span class="icon-arrow"></span>
+        <span>服务详情</span>
+    </header>
+    <!-- Swiper -->
+<!--     <div class="swiper-container swiper-head">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="static/images/banner0.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/images/banner1.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/images/banner0.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/images/banner1.png" alt="">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div> -->
+    <div class="midContent">
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="pull-left">
+                    <div class="title">
+                        <span id="service_title"></span>
+                        <span class="icon-bao"></span>
+                        <div>
+                        <span id="post_type_name"></span>&nbsp;&nbsp;成交<span id="tradeNumber">15</span>单&nbsp;&nbsp;好评<span id="goodNumber">6</span>单&nbsp;&nbsp;差评<span id="badNumber">1</span>单
+                        </div>
+                        <div class="waring-color"><span id="service_charge"></span><span id="service_charge_meter_unit_name"></span></div>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div id="headerLogo">
+                        <img src="" class="avatarpath"  ondragstart="return false;"/>
+                    </div>
+                    <div></div>
+                    <div>诚信值：<span class="" id="credit"></span></div>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e" style="padding: 0px 2%;">
+                <ul class="orderContent">
+                    <li>
+                        <div class="left">
+                            服务方式
+                        </div>
+                        <div class="right" id="service_mode">
+                        </div>
+                    </li>
+                    <li>
+                        <p class="p_title">
+                            服务时段
+                        </p>
+                        <div class='div_separate' id="service_period">
+                        <div class='week' id="1">周一</div>
+                        <div class='week' id="2">周二</div>
+                        <div class='week' id="3">周三</div>
+                        <div class='week' id="4">周四</div>
+                        <div class='week' id="5">周五</div>
+                        <div class='week' id="6">周六</div>
+                        <div class='week' id="7">周日</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            服务时间
+                        </div>
+                        <div class="right" id="job_time">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="left">
+                            服务区域
+                        </div>
+                        <div class="right">
+                            <div><span class="icon-common icon-addr"></span><span id="work_address"></span>附近<span id="service_area"></span>公里</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="operate-desc">
+                    <div class="title">我的优势</div>
+                    <div class="z_content"  id="self_strength">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <div class="operate-desc">
+                    <div class="title">服务内容</div>
+                    <div id="service_description">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="operate-box">
+            <div class="operate-info-e">
+                <ul class="pic_show">
+                </ul>
+            </div>
+        </article>
+    </div>
+    <footer class="judge-footer">
+        <article class="operate-box">
+            <nav class="btn-operate">
+                <button type="button" class="button-o" onclick="todoSubmit()">雇Ta</button>
+            </nav>
+        </article>
+    </footer>
+</div>
+
+<script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
+<!-- <script type="text/javascript" src="static/js/swiper.min.js"></script> -->
+<!-- <script>
+    var mySwiper = new Swiper('.swiper-head', {
+        loop: true,
+        autoplay : 1000,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 6
+    })
+</script> -->
+<script>
+    var url = 'http://api.dalinggong.com';
+    function getUrlVars() {
+    //截取url中的参数
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi,
+		function(m,key,value) {
+			vars[key] = value;
+		}
+	);
+	return vars;
+    }
+    //var id = getUrlVars()["id"];
+    //var userid = getUrlVars()["userid"];
+
+    var id = '1516902360123410000001';//服务id
+    var userid = "27786400414306915017947429018";//用户id
+
+    $(function () {
+    	
+    	getServiceById();
+    	
+        var imgH=$("#headerLogo img").height();
+        var imgW=$("#headerLogo img").width();
+        if(imgH>imgW){
+            $("#headerLogo img").width($("#headerLogo").width());
+        }
+        if(imgH<imgW){
+            $("#headerLogo img").height($("#headerLogo").height());
+        }else{
+            $("#headerLogo img").width($("#headerLogo").width());
+            $("#headerLogo img").height($("#headerLogo").height());
+        }
+        $(".zhan").click(function(){
+            $(".z_content").css("display","block");
+            $(this).children("img").attr("src","static/images/up.png").siblings('span').html("收起");
+            if($('.zhuan span').html("展开")){
+                $(this).click(function(){
+                     $(this).children("img").attr("src","static/images/down.png");
+                     $(this).children("span").html("收起")
+                     $(".z_content").css("display","-webkit-box");
+                })
+            }else if($('.zhuan span').html("收起")){
+                $(this).click(function(){
+                     $(this).children("img").attr("src","static/images/up.png");
+                     $(this).children('span').html('展开');
+                     $(".z_content").css("display","block");
+                })
+            }
+        });
+
+       /*  $(".week").click(function(){
+            $(this).toggleClass("weekactive");
+        }) */
+    })
+    function todoSubmit(){
+        window.location.href="yuyue.html";
+    }
+		function getServiceById() {
+		    //根据id获取服务详情
+		    $.ajax({
+		        url: url + '/job/service/' + id,
+		        type: 'get',
+		        data: "",
+		        dataType: 'json',
+		        timeout: '1000',
+		        cache: 'false',
+		        error: function () {
+		            alert('报错');
+		        },
+		        success: function (data) {
+		        	console.log(data);
+	                if (data.status == 200 && data.body.code == 'SUCCESS') {
+	                	$(".avatarpath").attr('src',data.body.data.avatarpath);//头像
+	                	$("#credit").html(data.body.data.credit);//诚信值
+	                	$("#service_title").html(data.body.data.service_title);//服务标题 
+	                	$("#post_type_name").html(data.body.data.post_type_name);//职位类型文本
+	                	$("#service_charge").html(data.body.data.service_charge);//服务费
+	                	$("#service_charge_meter_unit_name ").html(data.body.data.service_charge_meter_unit_name );//服务计量单位(1. 元/单2.元/小时) = ['1', '2']  
+	                	$("#work_address ").html(data.body.data.work_address);//工作地址
+	                	$("#service_area").html(data.body.data.service_area);//服务范围（单位km 千米） = ['3', '5', '10']
+	                	$("#service_description").html(data.body.data.service_description);//描述介绍
+	                	$("#self_strength").html(data.body.data.self_strength);// 我的优势 
+	                	var periods = data.body.data.service_period;
+	                	if(periods.length>0){
+	                		var text_period = "";
+	                		for (var i=0;i<periods.length;i++){
+	                			for (var j=1;j<8;j++){
+		                			if(periods[i].code==j){
+		                				$("#"+j).attr('class','week weekactive');
+		                			}
+		                		}
+	                		}
+	                	}
+	                	
+	                	var modes = data.body.data.service_mode;
+	                	if(modes.length>0){
+	                		var text_mode = "";
+	                		for (var i=0;i<modes.length;i++){
+	                			text_mode += modes[i].code+"."+modes[i].value;
+	                		}
+	                		$("#service_mode").html(text_mode);//服务方式(数组 方式code +方式name)
+	                	}
+	                	
+	                	var imgs = data.body.data.service_imgs ;// 服务图片列表(图片url数组) 
+	                	if(imgs.length>0){
+	                		var text_img = "";
+	                		for (var i=0;i<imgs.length;i++){
+	                			text_img += "<li><img src="+imgs[i].url+"></li>"
+	                		}
+	                		$(".pic_show").html(text_img);
+	                	}
+	                	var times = data.body.data.job_time; 
+	                	if(times.length>0){
+	                		var text = "";
+	                		for (var i=0;i<times.length;i++){
+	                			text += times[i].start_time+"-"+times[i].end_time+"&nbsp; &nbsp; "
+	                		}
+	                		$("#job_time").html(text);
+	                	}else{
+	                		$("#job_time").html("未定");
+	                	}
+	                	window.localStorage.setItem('post_type_name', data.body.data.post_type_name);
+	                	window.localStorage.setItem('serviceid', id);
+	                	window.localStorage.setItem('service_owner_id', data.body.data.userid);
+	                	window.localStorage.setItem('userid', userid);
+	                }
+		            
+		        }
+		    });
+		}
+</script>
+</body>
+</html>

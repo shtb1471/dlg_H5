@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>待处理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="static/css/common.css"/>
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+<body class="bg-gray">
+<div class="container">
+    <ul class="zw-tabs">
+        <li class="active"><a href="javascript:void(0);">待处理</a></li>
+        <li><a href="javascript:void(0);">查找</a></li>
+    </ul>
+    <div class="zw-group zw-search" style="display: none;">
+        <input name="phone" class="zw-input" type="text" placeholder="请输入手机号"/>
+        <button class="btn-login" type="button" onclick="todoSearch()">查询</button>
+    </div>
+    <div class="zwList">
+        <table style="display: none;" tabindex="0" cellpadding="0" cellspacing="0">
+        </table>
+        <div id="loading" class="loading">
+            <img src="static/images/loading.gif"/>
+        </div>
+    </div>
+    <div id="zw-more" class="zw-more">下拉加载更多</div>
+</div>
+<script src="static/js/jquery-1.8.3.min.js"></script>
+<script>
+    var href = window.location.href
+    if (href.indexOf("=") > -1) {
+        var sid = window.location.href.split("=")[1];
+    }
+    var isScrollStop = true;  //页面是否停止滚动 防止屏幕有滑动但还没到底部就开始加载数据
+    var isMoveDown = false;  //防止手指向上滑动屏幕开始加载数据
+    var isLoading = false;   //防止异步请求数据未返回到前端的时候重复提交请求
+    var isMoved = false;   //手指是否在滑动屏幕 防止出现手指触摸屏幕而没有滑动就加载数据
+    var startY = 0;
+    var startX = 0;
+    var page=0;
+    $(function () {
+        getList();
+    })
+    var itemIndex=0;
+    $(".zw-tabs li").click(function () {
+        itemIndex = $(this).index();
+        $(".zw-tabs li").removeClass("active");
+        $(this).addClass("active");
+        // 如果选中菜单一
+        if (itemIndex == 0) {
+            page=0;
+            $(".zw-search").hide();
+            $("#zw-more").html("下拉加载更多").show();
+            $("#loading").show();
+            $('[name="phone"]').val("");
+            $(".zwList table").empty();
+            $(".zwList table").hide();
+            getList();
+        } else if (itemIndex == 1) {
+            page=0;
+            $("#zw-more").hide();
+            $(".zw-search").show();
+            $(".zwList table").empty();
+        }
+    })
+    $(document).bind("scroll", srcollEvent);
+    $(document).bind("touchstart", startEvent).bind("touchmove", moveEvent).bind("touchcancel", stopEvent).bind("touchend", stopEvent);
+
+    function srcollEvent() {
+        if ($(document).scrollTop() > 0) {
+            isScrollStop = false;
+        }
+    }
+    function startEvent() {
+        startY = event.targetTouches[0].clientY;
+        isScrollStop = true;
+        isMoved = false;
+        isMoveDown = false;
+    }
+    function moveEvent() {
+        var Y = event.targetTouches[0].clientY;
+        if (startY > Y) {
+            isMoveDown = true;
+        } else {
+            isMoveDown = false;
+        }
+        isMoved = true;
+
+    }
+    function stopEvent() {
+        if (isScrollStop && isMoved && !isLoading && isMoveDown) {
+            console.log("分页加载");
+            page++;
+            getList();
+        }
+    }
+    function getList() {
+        $("#loading").show();
+        $(".zwList table").hide();
+        var dataJson = {
+            format: "json"
+            , sid: sid
+            , size: 10
+            , page: page
+            , status: 0
+        }
+        if ($('[name="phone"]').val()) {
+            dataJson.phone = $.trim($('[name="phone"]').val())
+        }
+        $.ajax({
+            type: "post",
+            url: "http://10.20.31.201:8059/api/ops/zw/userHandApi/userList",//10.20.31.201:8066
+            data: dataJson,
+            success: function (data) {
+                if (data.code == 0) {
+                    var html = "";
+                    var datas = data.data;
+                    if (data.data && datas.length > 0) {
+                        for (var i = 0; i < datas.length; i++) {
+                            switch (datas[i].sex) {
+                                case 1:
+                                    datas[i].sex = "男";
+                                    break;
+                                case 2:
+                                    datas[i].sex = "女";
+                                    break;
+                                default:
+                                    datas[i].sex = "未知";
+                                    break;
+                            }
+                            html += "<tr onclick=\"toDetail(\'"+datas[i].id+"\')\"><td>" + datas[i].phone + "</td><td>" + datas[i].name + "</td><td>" + datas[i].sex + "</td><td>" + getTime(datas[i].createTime) + "</td></tr>"
+                        }
+                    } else {
+                        $("#zw-more").html("~我是有底线的~");
+                    }
+                    $("#loading").hide();
+                    $(".zwList table").show();
+                    $(".zwList table").append(html);
+                } else {
+                    $("#loading").hide();
+                    $(".zwList table").show();
+                    if(itemIndex==1){
+                        $(".zwList table").append("<tr><td style='text-align: center'>暂无数据</td></tr>");
+                    }else{
+                        $("#zw-more").html("~我是有底线的~");
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    }
+    //    获取日期
+    function getTime(dateTime) {
+        if (dateTime != "" && dateTime != null && dateTime != undefined) {
+            const y = new Date(dateTime).getFullYear();
+            var m = new Date(dateTime).getMonth() + 1;
+            m = m < 10 ? '0' + m : m;
+            var d = new Date(dateTime).getDate();
+            d = d < 10 ? ('0' + d) : d;
+            var h = new Date(dateTime).getHours();
+            h = h < 10 ? ('0' + h) : h;
+            var minute = new Date(dateTime).getMinutes();
+            minute = minute < 10 ? ('0' + minute) : minute;
+            var s = new Date(dateTime).getSeconds();
+            s = s < 10 ? ('0' + s) : s;
+            return m + '-' + d + " " + h + ":" + minute + ":" + s;
+        } else {
+            return '';
+        }
+
+    }
+    function todoSearch() {
+        getList()
+    }
+    function toDetail(id) {
+        window.location.href="detail.html?sid="+sid+"&id="+id;
+    }
+
+</script>
+</body>
+</html>
